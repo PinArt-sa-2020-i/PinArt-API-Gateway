@@ -17,7 +17,7 @@ const server = new ApolloServer({
   resolvers,
   dataSources: () => ({
     exampleAPI: new ExampleAPI(),
-    profileAPI: new ProfileAPI(),
+    profileAPI: new ProfileAPI()
   }),
 });
 

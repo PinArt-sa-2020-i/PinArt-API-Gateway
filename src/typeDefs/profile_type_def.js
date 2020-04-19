@@ -21,12 +21,12 @@ const profileTypeDefs = gql`
     privado: Boolean!
   }
 
-  type Query {
+  extend type Query {
     allUsers: [User]!
     userById(id: Int!): User!
   }
 
-  type Mutation {
+  extend type Mutation {
     createUser(user: UserInput!): User!
     updateUser(id: Int!, user: UserInput!): User!
     deleteUser(id: Int!): Int

@@ -2,7 +2,7 @@ const profileResolver = {
   Query: {
     allUsers: (_, __, { dataSources }) => dataSources.profileAPI.getAllUser(),
     userById: (_, { id }, { dataSources }) =>
-      dataSources.profileAPI.getUserbyId(id),
+      dataSources.profileAPI.getUserbyId(id)
   }
   //   Mutation: {
   //     createUser: (_, { user }, { dataSources }) =>
