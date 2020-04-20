@@ -9,13 +9,15 @@ const resolvers = require('./resolvers');
 
 //LLama a una la API de ejemplos
 const ExampleAPI = require('./dataSources/example_api');
+const ConfigAccountAPI = require('./dataSources/configAccount_api');
 
 //Se crea el servidor
 const server = new ApolloServer({
      typeDefs,
      resolvers,
      dataSources: () => ({
-       exampleAPI: new ExampleAPI()
+       exampleAPI: new ExampleAPI(),
+       configAccountAPI: new ConfigAccountAPI()
      })
 });
 
