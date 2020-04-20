@@ -12,6 +12,8 @@ const multimediaTypeDefs = gql`
         usuario_creador_id: String
         etiquetas_relacionadas_ids: [String]
         tablero_agregados_ids:[String]
+        created_at: String
+        updated_at: String
     }
 
     input MultimediaInput{

@@ -280,9 +280,6 @@ class MultimediaAPI extends RESTDataSource {
         }
     }
 
-
-
-
     multimediaReducer(response){
         return{
             id: response.multimedia._id.$oid || "0000",
@@ -293,7 +290,9 @@ class MultimediaAPI extends RESTDataSource {
             id_bucket: response.multimedia.id_bucket,
             usuario_creador_id: response.multimedia.usuario_creador_id,
             etiquetas_relacionadas_ids: response.multimedia.etiquetas_relacionada_ids,
-            tablero_agregados_ids:response.multimedia.tableros_agregado_ids
+            tablero_agregados_ids:response.multimedia.tableros_agregado_ids,
+            created_at: response.multimedia.created_at,
+            updated_at: response.multimedia.updated_at,
         }
     };
     
