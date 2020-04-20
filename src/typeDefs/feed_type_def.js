@@ -10,9 +10,11 @@ const feedTypeDefs = gql`
         formato: String
         tamano: String
         id_bucket: String
-        usuario_creador_id: MulRefUsuario
-        etiquetas_relacionadas_ids: [Etiqueta]
-        tableros_agregados_ids: [Tablero]
+        usuario_creador_id: String
+        etiquetas_relacionadas_ids: [String]
+        tableros_agregados_ids: [String]
+        created_at: String
+        updated_at: String
     }
 
     type MulRefUsuario{
@@ -21,12 +23,16 @@ const feedTypeDefs = gql`
 
     type Tablero{
         id: String!
-        multimedia_agregada_ids: [Multimedia]
+        multimedia_agregada_ids: [String]
     }
 
     type Etiqueta{
         id: String!
-        multimedia_relacionada_ids: [Multimedia]
+        multimedia_relacionada_ids: [String]
+    }
+
+    type UserFeed{
+        userFeed: [Multimedia]
     }
 
     extend type Query {
