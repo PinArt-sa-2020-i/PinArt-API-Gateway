@@ -8,5 +8,6 @@ const authTypeDefs = require("./auth_type_def");
 const schemaArrays = [root, exampleTypeDefs, profileTypeDefs, authTypeDefs];
 //const schemaArrays = [exampleTypeDefs, other, other,...];
 
+
 //Exporta los typeDefs
 module.exports = schemaArrays;
