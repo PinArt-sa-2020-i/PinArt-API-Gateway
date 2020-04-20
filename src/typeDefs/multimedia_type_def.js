@@ -6,26 +6,41 @@ const multimediaTypeDefs = gql`
         id: String!
         descripcion: String
         url: String
-        tipo: String
         formato: String
         tamano: String
         id_bucket: String
-        usuario_creador: MulRefUsuario
-        etiquetas_relacionadas: [String]
-        tablero_agregados:[String]
+        usuario_creador_id: String
+        etiquetas_relacionadas_ids: [String]
+        tablero_agregados_ids:[String]
     }
 
-    type MulRefUsuario{
+    input MultimediaInput{
+        idUsuario:String!
+        descripcion:String!
+        idEtiquetas:[String]!
+        file: Upload!
+    }
+
+    input UpdateMultimediaInput{
         id: String!
+        descripcion: String
+        idEtiquetas: [String]
     }
 
     extend type Mutation{
-        addMultimedia( idUsuario:String! 
-                       descripcion:String!
-                       idEtiquetas:[String]!
-                       file: Upload!
-                     ) :String
+        addMultimedia( multimedia: MultimediaInput) : Multimedia
+        deleteTagMultimedia(idMultimedia: String, idTag:String): String
+        addTagMultimedia(idMultimedia: String, idTag:String): String
+        deleteMultimedia(idMultimedia:String): String
+        updateMultimedia(multimedia:UpdateMultimediaInput!):String
+        addMultimediaTablero(idMultimedia: String, idTablero:String): String
+        deleteMultimediaTablero(idMultimedia:String, idTablero:String): String
+        deleteTablero_multimedia(idTablero:String):String
+        deleteUsuario_multimedia(idUsuario:String):String
+        deleteEtiqueta_multimedia(idEtiqueta:String):String
     }
+
+
 
 `;
 

@@ -39,7 +39,7 @@ class MultimediaAPI extends RESTDataSource {
 
         //Guarda el archivo
         filename = "src/tmp/" + filename;
-        await storeUpload({ stream, filename});
+       await storeUpload({ stream, filename});
 
         //Creando la data del formulario
         let formdata = new FormData();
@@ -58,13 +58,244 @@ class MultimediaAPI extends RESTDataSource {
 
         //Se realiza la consulta
         const response=  await fetch( `${this.baseURL}multimedia/add`, requestOptions)
-                                    .then(response => { return response.json(); })
-                                    .then(myJson => { return myJson; });
+                                    .then(response => { 
+                                        return { 
+                                            status:response.status,
+                                            body: response.json()
+                                        }; 
+                                    })
+                                    .then(response => { return response; });
         
         //Se elimina el archivo
         await fs.unlink(fileFormData.path, function (err) { if (err) throw err;});
-        return JSON.stringify(response);
+
+        //Manejando las respuestas
+        if(response.status == 200){
+            return {
+                status: 200,
+                data: this.multimediaReducer(await response.body)
+            };
+        }
+        else{
+            return{
+                status: response.status,
+                message: (await response.body).message
+            }
+        }
     }
+
+    async deleteTagMultimedia(idMultimedia, idEtiqueta){
+        try {
+            const response = await this.delete(`/multimedia/deleteEtiqueta/${idMultimedia}/${idEtiqueta}`);
+            return {
+                status: 200,
+                data: response.message
+            };
+        } catch (error) {
+            return {
+                status:error.extensions.response.status,
+                message: error.extensions.response.body.message
+            };
+        }
+    }
+
+    async deleteMultimedia(idMultimedia){
+        try {
+            const response = await this.delete(`/multimedia/delete/${idMultimedia}`);
+            return {
+                status: 200,
+                data: response.message
+            };
+        } catch (error) {
+            return {
+                status:error.extensions.response.status,
+                message: error.extensions.response.body.message
+            };
+        }
+    }
+
+    async addTagMultimedia(idMultimedia, idTag){
+        let formdata = new FormData();
+        formdata.append("idMultimedia", idMultimedia);
+        formdata.append("idEtiqueta", idTag);
+
+        let requestOptions = {
+            method: 'PUT',
+            body: formdata
+        };
+
+        const response=  await fetch(`${this.baseURL}multimedia/addEtiqueta`, requestOptions)
+                                    .then(response => { 
+                                        return { 
+                                            status:response.status,
+                                            body: response.json()
+                                        }; 
+                                    })
+                                    .then(response => { return response; });
+        //Manejando las respuestas
+        if(response.status == 200){
+            return {
+                status: 200,
+                data: (await response.body).message
+            };
+        }
+        else{
+            return{
+                status: response.status,
+                message: (await response.body).message
+            }
+        }
+    }
+
+    async addMultimediaTablero(idMultimedia, idTablero){
+        
+        let formdata = new FormData();
+        formdata.append("idMultimedia", idMultimedia);
+        formdata.append("idTablero", idTablero);
+        
+        let requestOptions = {
+            method: 'POST',
+            body: formdata
+        };
+
+        const response=  await fetch(`${this.baseURL}tablero/addMultimedia`, requestOptions)
+                                    .then(response => { 
+                                        return { 
+                                            status:response.status,
+                                            body: response.json()
+                                        }; 
+                                    })
+                                    .then(response => { return response; });
+        //Manejando las respuestas
+        if(response.status == 200){
+            return {
+                status: 200,
+                data: (await response.body).message
+            };
+        }
+        else{
+            return{
+                status: response.status,
+                message: (await response.body).message
+            }
+        }
+        
+    }
+
+    async updateMultimedia(multimedia){
+        
+        let formdata = new FormData();
+        formdata.append("id", multimedia.id);
+        formdata.append("descripcion", multimedia.descripcion);
+        for(let i=0; i<multimedia.idEtiquetas.length; i++){
+            formdata.append("idEtiquetas[]", multimedia.idEtiquetas[i]);
+        }
+
+        let requestOptions = {
+            method: 'PUT',
+            body: formdata
+        };
+
+        const response=  await fetch(`${this.baseURL}multimedia/update`, requestOptions)
+                                    .then(response => { 
+                                        return { 
+                                            status:response.status,
+                                            body: response.json()
+                                        }; 
+                                    })
+                                    .then(response => { return response; });
+        //Manejando las respuestas
+        if(response.status == 200){
+            return {
+                status: 200,
+                data: (await response.body).message
+            };
+        }
+        else{
+            return{
+                status: response.status,
+                message: (await response.body).message
+            }
+        }
+        
+    }
+
+    async deleteMultimediaTablero(idTablero, idMultimedia){
+        try {
+            const response = await this.delete(`/tablero/deleteMultimedia/${idTablero}/${idMultimedia}`);
+            return {
+                status: 200,
+                data: response.message
+            };
+        } catch (error) {
+            return {
+                status:error.extensions.response.status,
+                message: error.extensions.response.body.message
+            };
+        }
+    }
+
+    async deleteTablero_multimedia(idTablero){
+        try {
+            const response = await this.delete(`/tablero/delete/${idTablero}`);
+            return {
+                status: 200,
+                data: response.message
+            };
+        } catch (error) {
+            return {
+                status:error.extensions.response.status,
+                message: error.extensions.response.body.message
+            };
+        }
+    }
+
+    async deleteUsuario_multimedia(idUsuario){
+        try {
+            const response = await this.delete(`/usuario/delete/${idUsuario}`);
+            return {
+                status: 200,
+                data: response.message
+            };
+        } catch (error) {
+            return {
+                status:error.extensions.response.status,
+                message: error.extensions.response.body.message
+            };
+        }
+    }
+    
+    async deleteEtiqueta_multimedia(idEtiqueta){
+        try {
+            const response = await this.delete(`/etiqueta/delete/${idEtiqueta}`);
+            return {
+                status: 200,
+                data: response.message
+            };
+        } catch (error) {
+            return {
+                status:error.extensions.response.status,
+                message: error.extensions.response.body.message
+            };
+        }
+    }
+
+
+
+
+    multimediaReducer(response){
+        return{
+            id: response.multimedia._id.$oid || "0000",
+            descripcion: response.multimedia.descripcion,
+            url: response.multimedia.url,
+            formato: response.multimedia.formato,
+            tamano: response.multimedia.tamano,
+            id_bucket: response.multimedia.id_bucket,
+            usuario_creador_id: response.multimedia.usuario_creador_id,
+            etiquetas_relacionadas_ids: response.multimedia.etiquetas_relacionada_ids,
+            tablero_agregados_ids:response.multimedia.tableros_agregado_ids
+        }
+    };
     
 }
 
