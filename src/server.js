@@ -7,7 +7,12 @@ module.exports = {
   example_entryPoint: process.env.EXAMPLE_ENTRY || "sa-auth-ms/resources/",
 
   //Profile API
-  profile_url: process.env.AUTH_URL || "3.227.65.124",
-  profile_port: process.env.AUTH_PORT || "8080",
-  profile_entryPoint: process.env.AUTH_ENTRY || "api/",
+  profile_url: process.env.PROFILE_URL || "3.227.65.124",
+  profile_port: process.env.PROFILE_PORT || "8080",
+  profile_entryPoint: process.env.PROFILE_ENTRY || "api/",
+
+  //Auth API
+  auth_url: process.env.AUTH_URL || "3.227.65.124",
+  auth_port: process.env.AUTH_PORT || "4000",
+  auth_entryPoint: process.env.AUTH_ENTRY || "users/",
 };

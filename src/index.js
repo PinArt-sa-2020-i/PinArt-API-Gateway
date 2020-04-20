@@ -10,6 +10,7 @@ const resolvers = require("./resolvers");
 //LLama a una la API de ejemplos
 const ExampleAPI = require("./dataSources/example_api");
 const ProfileAPI = require("./dataSources/profile_api");
+const AuthAPI = require("./dataSources/auth_api");
 
 //Se crea el servidor
 const server = new ApolloServer({
@@ -17,7 +18,8 @@ const server = new ApolloServer({
   resolvers,
   dataSources: () => ({
     exampleAPI: new ExampleAPI(),
-    profileAPI: new ProfileAPI()
+    profileAPI: new ProfileAPI(),
+    authAPI: new AuthAPI(),
   }),
 });
 

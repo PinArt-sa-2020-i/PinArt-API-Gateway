@@ -49,31 +49,31 @@ class ProfileAPI extends RESTDataSource {
   async createProfile(profile) {
     profile = new Object(JSON.parse(JSON.stringify(profile)));
     const response = await this.post("profile", profile);
-    return this.authReducer(response);
+    return this.profileReducer(response);
   }
 
   async createCountry(country) {
     country = new Object(JSON.parse(JSON.stringify(country)));
     const response = await this.post("country", country);
-    return this.authReducer(response);
+    return this.countryReducer(response);
   }
 
   async createRecovery(recovery) {
     recovery = new Object(JSON.parse(JSON.stringify(recovery)));
     const response = await this.post("recovery", recovery);
-    return this.authReducer(response);
+    return this.recoveryReducer(response);
   }
 
   async createReport(report) {
     report = new Object(JSON.parse(JSON.stringify(report)));
     const response = await this.post("report", report);
-    return this.authReducer(response);
+    return this.reportReducer(response);
   }
 
   async createCause(cause) {
     cause = new Object(JSON.parse(JSON.stringify(cause)));
     const response = await this.post("cause", cause);
-    return this.authReducer(response);
+    return this.causeReducer(response);
   }
 
   //Le da el formato necesario a la salida
