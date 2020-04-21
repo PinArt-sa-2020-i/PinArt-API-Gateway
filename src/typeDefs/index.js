@@ -4,8 +4,9 @@ const exampleTypeDefs = require("./example_type_def");
 const configAccountTypeDefs = require("./configAccount_type_def");
 const profileTypeDefs = require("./profile_type_def");
 const authTypeDefs = require("./auth_type_def");
+const multimediaTypeDefs = require("./multimedia_type_def");
 
-const schemaArrays = [root, exampleTypeDefs, profileTypeDefs, authTypeDefs, configAccountTypeDefs];
+const schemaArrays = [root, exampleTypeDefs, profileTypeDefs, authTypeDefs, configAccountTypeDefs, multimediaTypeDefs];
 
 //Exporta los typeDefs
 module.exports = schemaArrays;

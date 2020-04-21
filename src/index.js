@@ -9,6 +9,8 @@ const resolvers = require("./resolvers");
 
 
 const ExampleAPI = require('./dataSources/example_api');
+
+const MultimediaAPI = require('./dataSources/multimedia_api');
 const ConfigAccountAPI = require('./dataSources/configAccount_api');
 const ProfileAPI = require("./dataSources/profile_api");
 const AuthAPI = require("./dataSources/auth_api");
@@ -19,6 +21,7 @@ const server = new ApolloServer({
      resolvers,
      dataSources: () => ({
        exampleAPI: new ExampleAPI(),
+       multimediaAPI: new MultimediaAPI()
        profileAPI: new ProfileAPI(),
        authAPI: new AuthAPI(),
        configAccountAPI: new ConfigAccountAPI()
