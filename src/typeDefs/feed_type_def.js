@@ -6,7 +6,6 @@ const feedTypeDefs = gql`
         id: String!
         descripcion: String
         url: String
-        tipo: String
         formato: String
         tamano: String
         id_bucket: String
@@ -15,10 +14,6 @@ const feedTypeDefs = gql`
         tableros_agregados_ids: [String]
         created_at: String
         updated_at: String
-    }
-
-    type MulRefUsuario{
-        id: String!
     }
 
     type Tablero{
@@ -31,22 +26,15 @@ const feedTypeDefs = gql`
         multimedia_relacionada_ids: [String]
     }
 
-    type UserFeed{
-        userFeed: [Multimedia]
-    }
 
     extend type Query {
-        getMultimediaById(id: String!): Multimedia!
-        getMultimediaByUser(id: String!): [Multimedia]!
-        getMultimediaByTag(id: String!): [Multimedia]!
-        getMultimediaByTable(id: String!): [Multimedia]!
+        getMultimediaById(id: String!): Multimedia
+        getMultimediaByUser(id: String!): [Multimedia]
+        getMultimediaByTag(id: String!): [Multimedia]
+        getMultimediaByTable(id: String!): [Multimedia]
+        getUsersFeed(idUsuario: String): [Multimedia]
+        getTagsFeed(idUsuario: String): [Multimedia]
     }
-
-    extend type Mutation {
-        getUsersFeed(followedUsers: [String]!): [Multimedia]!
-        getTagsFeed(followedTags: [String]!): [Multimedia]!
-    }
-
 `;
 
 //Se exporta el typeDef

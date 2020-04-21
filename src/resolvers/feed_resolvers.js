@@ -4,10 +4,24 @@ const feedResolver = {
         getMultimediaByUser: (_, { id }, {dataSources}) => dataSources.feedAPI.getMultimediaByUser(id),
         getMultimediaByTag: (_, { id }, {dataSources}) => dataSources.feedAPI.getMultimediaByTag(id),
         getMultimediaByTable: (_, { id }, {dataSources}) => dataSources.feedAPI.getMultimediaByTable(id),
-    },
-    Mutation: {
-        getUsersFeed: (_, { followedUsers }, {dataSources}) => dataSources.feedAPI.getUsersFeed(followedUsers),
-        getTagsFeed: (_, { followedTags }, {dataSources}) => dataSources.feedAPI.getUsersFeed(followedTags),
+        getUsersFeed: async (_, { idUsuario }, {dataSources}) =>{
+            //Aca se simula la funcion de Elsa
+            //Le envio este idUsuario y me regresa los ids de los usuariso que sigue
+            
+            //Supongamos que eso tiene este formato:
+            const followedUsers = ["Ibai", "Ocelote"];
+
+            return await dataSources.feedAPI.getUsersFeed(followedUsers);
+
+        },
+        getTagsFeed: async(_, { idUsuario }, {dataSources}) => {
+            //Aca se simula la funcion de Elsa
+            //Le envio este idUsuario y me regresa los ids de las etiquetas que sigue
+            
+            //Supongamos que eso tiene este formato:
+            const followedTags = ["LOL", "G2"];
+            return await dataSources.feedAPI.getTagsFeed(followedTags)
+        }
     }
 };
 

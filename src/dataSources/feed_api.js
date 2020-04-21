@@ -57,7 +57,6 @@ class FeedAPI extends RESTDataSource {
         let petition = `{"followedTags": ${JSON.stringify(followedTags)}}`;
         let petitionFixed = petition.replace(/'/g, '"');
         const response = await this.post('getTagsFeed', JSON.parse(petitionFixed));
-        console.log(response);
         return Array.isArray(response.tagFeed)
         ? response.tagFeed.map(multimedia => this.multimediaWithIdReducer(multimedia))
         : [];
@@ -78,6 +77,8 @@ class FeedAPI extends RESTDataSource {
             etiquetas_relacionadas_ids: multimedia.etiquetas_relacionada_ids,
             tableros_agregados_ids: multimedia.tableros_agregado_ids,
             created_at: multimedia.created_at,
+            updated_at: multimedia.updated_at,
+            tamano: multimedia.tamano
         };
     }
 
@@ -93,6 +94,8 @@ class FeedAPI extends RESTDataSource {
             etiquetas_relacionadas_ids: multimedia.etiquetas_relacionada_ids,
             tableros_agregados_ids: multimedia.tableros_agregado_ids,
             created_at: multimedia.created_at,
+            updated_at: multimedia.updated_at,
+            tamano: multimedia.tamano
         };
     }
 }
