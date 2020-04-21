@@ -7,7 +7,7 @@ const serverConfig = require('../server');
 class FeedAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = `${serverConfig.multimedia_ms_url}:${serverConfig.multimedia_ms_port}/`;    
+        this.baseURL = `http://${serverConfig.feed_url}:${serverConfig.feed_port}/`;    
     }
 
     //Realiza una peticion get para obtener la informacion de una multimedia

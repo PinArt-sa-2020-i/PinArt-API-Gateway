@@ -5,12 +5,12 @@ module.exports = {
     example_entryPoint:process.env.EXAMPLE_ENTRY || 'sa-auth-ms/resources/',
 
     //Data server de Multimedia Feed
-    multimedia_ms_url: process.env.MULTIMEDIA_URL || 'http://18.214.200.193',
-    multimedia_ms_port: process.env.MULTIMEDIA_PORT || '3001',
-    multimedia_ma_entryPoint: process.env.MULTIMEDIA_ENTRY || '',
+    feed_url: process.env.MULTIMEDIA_URL || '18.214.200.193',
+    feed_port: process.env.MULTIMEDIA_PORT || '3001',
+    feed_entryPoint: process.env.MULTIMEDIA_ENTRY || '',
 
     //Data server de MultimediaAPI
-    multimedia_url: process.env.MULTIMEDIA_URL || 'ec2-52-201-216-123.compute-1.amazonaws.com',
+    multimedia_url: process.env.MULTIMEDIA_URL || '18.214.200.193',
     multimedia_port: process.env.MULTIMEDIA_PORT || '3000',
     multimedia_entryPoint: process.env.MULTIMEDIA_ENTRY || '',
     
