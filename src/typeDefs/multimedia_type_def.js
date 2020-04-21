@@ -11,7 +11,7 @@ const multimediaTypeDefs = gql`
         id_bucket: String
         usuario_creador_id: String
         etiquetas_relacionadas_ids: [String]
-        tablero_agregados_ids:[String]
+        tableros_agregados_ids:[String]
         created_at: String
         updated_at: String
     }

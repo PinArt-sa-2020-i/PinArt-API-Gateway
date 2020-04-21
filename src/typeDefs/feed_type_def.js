@@ -2,20 +2,6 @@
 const { gql } = require('apollo-server');
 
 const feedTypeDefs = gql`
-    type Multimedia{
-        id: String!
-        descripcion: String
-        url: String
-        formato: String
-        tamano: String
-        id_bucket: String
-        usuario_creador_id: String
-        etiquetas_relacionadas_ids: [String]
-        tableros_agregados_ids: [String]
-        created_at: String
-        updated_at: String
-    }
-
     type Tablero{
         id: String!
         multimedia_agregada_ids: [String]
