@@ -42,12 +42,11 @@ class FeedAPI extends RESTDataSource {
 
     //Realiza una peticion post para obtener el feed de un usuario dados sus usuarios seguidos
     async getUsersFeed(followedUsers){
-        console.log(followedUsers);
         //Formato esperado para el funcionamiento de la peticion 
-        let petition = JSON.parse('{"followedUsers": ["Saicod"]}');
-        console.log(petition)
+        let petition = `{"followedUsers": ${JSON.stringify(followedUsers)}}`;
+        let petitionFixed = petition.replace(/'/g, '"');
         // TODO: formatear el followedUser al tipo esperado.
-        const response = await this.post('getUsersFeed', petition);
+        const response = await this.post('getUsersFeed', JSON.parse(petitionFixed));
         return Array.isArray(response.userFeed)
         ? response.userFeed.map(multimedia => this.multimediaWithIdReducer(multimedia))
         : [];
@@ -55,8 +54,10 @@ class FeedAPI extends RESTDataSource {
 
     //Realiza una peticion post para obtener el feed de un usuario dados sus tags seguidos
     async getTagsFeed(followedTags){
-        followedTags = new Object(JSON.parse(JSON.stringify(followedTags)));
-        const response = await this.post('getTagsFeed', followedTags);
+        let petition = `{"followedTags": ${JSON.stringify(followedTags)}}`;
+        let petitionFixed = petition.replace(/'/g, '"');
+        const response = await this.post('getTagsFeed', JSON.parse(petitionFixed));
+        console.log(response);
         return Array.isArray(response.tagFeed)
         ? response.tagFeed.map(multimedia => this.multimediaWithIdReducer(multimedia))
         : [];
