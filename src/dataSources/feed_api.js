@@ -42,8 +42,12 @@ class FeedAPI extends RESTDataSource {
 
     //Realiza una peticion post para obtener el feed de un usuario dados sus usuarios seguidos
     async getUsersFeed(followedUsers){
-        followedUsers = new Object(JSON.parse(JSON.stringify(followedUsers)));
-        const response = await this.post('getUsersFeed', followedUsers);
+        console.log(followedUsers);
+        //Formato esperado para el funcionamiento de la peticion 
+        let petition = JSON.parse('{"followedUsers": ["Saicod"]}');
+        console.log(petition)
+        // TODO: formatear el followedUser al tipo esperado.
+        const response = await this.post('getUsersFeed', petition);
         return Array.isArray(response.userFeed)
         ? response.userFeed.map(multimedia => this.multimediaWithIdReducer(multimedia))
         : [];
