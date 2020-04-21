@@ -15,7 +15,7 @@ module.exports = {
     multimedia_entryPoint: process.env.MULTIMEDIA_ENTRY || '',
     
     //ConfigAccount API
-    configAccount_url: process.env.CONFIG_ACCOUNT_URL || "54.162.90.113",
+    configAccount_url: process.env.CONFIG_ACCOUNT_URL || "52.54.55.167",
     configAccount_port: process.env.CONFIG_ACCOUNT_PORT || "8000",
     configAccount_entryPoint: process.env.CONFIG_ACCOUNT_ENTRY || "Configuracion/",
     
