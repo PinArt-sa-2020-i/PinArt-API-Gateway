@@ -2,11 +2,21 @@
 const root = require("./root");
 const exampleTypeDefs = require("./example_type_def");
 const feedTypeDefs = require("./feed_type_def");
+const configAccountTypeDefs = require("./configAccount_type_def");
+const profileTypeDefs = require("./profile_type_def");
+const authTypeDefs = require("./auth_type_def");
+const multimediaTypeDefs = require("./multimedia_type_def");
 
+const schemaArrays = [
+                      root, 
+                      exampleTypeDefs, 
+                      profileTypeDefs, 
+                      authTypeDefs, 
+                      configAccountTypeDefs, 
+                      multimediaTypeDefs,
+                      feedTypeDefs
+                     ];
 
-//Añande el typeDef al example
-const schemaArrays = [root, exampleTypeDefs, feedTypeDefs];
-//const schemaArrays = [root, exampleTypeDefs, other, other,...];
 
 //Exporta los typeDefs
 module.exports = schemaArrays;
