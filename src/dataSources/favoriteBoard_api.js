@@ -82,10 +82,11 @@ class FavoriteBoardAPI extends RESTDataSource {
 
     //Realiza una peticion post
 
-    async createUser(user){
-        user = new Object(JSON.parse(JSON.stringify(user)));
-        const response = await this.post('user/', user);
-        return this.userReducer(response);
+    async createUser(id){
+        id = {id: id}
+        id = new Object(JSON.parse(JSON.stringify(id)));
+        const response = await this.post('/user/create', id);
+        return response;
     }
 
     async createBoard(user_id,board){
@@ -115,13 +116,14 @@ class FavoriteBoardAPI extends RESTDataSource {
     //Realiza una peticion delete
 
     async deleteUser(id){
-        const response = await this.delete(`user/${id}/`);
-        return this.userReducer(response);
+        const response = await this.delete(`user/delete/${id}`);
+        console.log(response);
+        return response;
     }
 
     async deleteBoard(id){
         const response = await this.delete(`/board/delete/${id}/`);
-        return this.boardReducer(response);
+        return response.id;
     }
 
     async deleteBoardFollow(id){
@@ -144,8 +146,8 @@ class FavoriteBoardAPI extends RESTDataSource {
         return {
             id: board.id || 0,
             name: board.name,
-            description: board.description
-            //user_id:board.user_id
+            description: board.description,
+            id_user:board.user_id
         };
     }
 

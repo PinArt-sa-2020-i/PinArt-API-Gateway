@@ -11,6 +11,7 @@ const favoriteBoardDefs = gql`
         name: String!
         description: String
         createdAt: String
+        id_user:Int
     }
     type BoardFollow {
         id: Int!
@@ -56,7 +57,7 @@ const favoriteBoardDefs = gql`
         
     }
     extend type Mutation {
-        createUser(user: UserInput!): User!
+        createUser(id: Int!): Int!
         deleteUser(id: Int!): Int
         createBoard(user_id:Int!,board:BoardInput!):Board       
         updateBoard(id: Int!, board: BoardInput!): Board!
