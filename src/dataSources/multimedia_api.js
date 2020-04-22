@@ -17,38 +17,20 @@ class MultimediaAPI extends RESTDataSource {
     }
     
 
-    async addMultimedia(idUsuario, descripcion, idEtiquetas, file){
-
-        //Manejo del Stream que permite almacenar el archivo en temp
-        const storeUpload = ({ stream, filename }) =>
-                                new Promise((resolve, reject) =>
-                                    stream
-                                    .pipe(fs.createWriteStream(filename))
-                                    .on("finish", () => resolve())
-                                    .on("error", reject)
-                            );
-
-        //Resuelve la promesa manejada por el archivo
-        let { stream, filename } = await file;
-
-        //Salva datos para recuperar el archivo
-        let fileFormData = {
-            name: filename,
-            path: `src/tmp/${filename}`
-        }
-
-        //Guarda el archivo
-        filename = "src/tmp/" + filename;
-       await storeUpload({ stream, filename});
+    async addMultimedia(idUsuario, descripcion, idEtiquetas, id_bucket, url_imagen, formato, tamano){
 
         //Creando la data del formulario
         let formdata = new FormData();
         formdata.append("idUsuario", idUsuario);
         formdata.append("descripcion", descripcion);
-        formdata.append('file', fs.readFileSync(fileFormData.path), fileFormData.name);
+        formdata.append("id_bucket", id_bucket);
+        formdata.append("url_imagen", url_imagen);
+        formdata.append("formato", formato);
+        formdata.append("tamano", tamano);
         for(let i=0; i<idEtiquetas.length; i++){
             formdata.append("idEtiquetas[]", idEtiquetas[i]);
         }
+        
         
         //Configurando opcion es del formulario
         var requestOptions = {
@@ -65,9 +47,6 @@ class MultimediaAPI extends RESTDataSource {
                                         }; 
                                     })
                                     .then(response => { return response; });
-        
-        //Se elimina el archivo
-        await fs.unlink(fileFormData.path, function (err) { if (err) throw err;});
 
         //Manejando las respuestas
         if(response.status == 200){
@@ -89,7 +68,7 @@ class MultimediaAPI extends RESTDataSource {
             const response = await this.delete(`/multimedia/deleteEtiqueta/${idMultimedia}/${idEtiqueta}`);
             return {
                 status: 200,
-                data: response.message
+                data: this.multimediaReducer(response)
             };
         } catch (error) {
             return {
@@ -136,7 +115,7 @@ class MultimediaAPI extends RESTDataSource {
         if(response.status == 200){
             return {
                 status: 200,
-                data: (await response.body).message
+                data: this.multimediaReducer(await response.body)
             };
         }
         else{
@@ -170,7 +149,7 @@ class MultimediaAPI extends RESTDataSource {
         if(response.status == 200){
             return {
                 status: 200,
-                data: (await response.body).message
+                data: this.tableroReducer(await response.body)
             };
         }
         else{
@@ -208,7 +187,7 @@ class MultimediaAPI extends RESTDataSource {
         if(response.status == 200){
             return {
                 status: 200,
-                data: (await response.body).message
+                data: this.multimediaReducer(await response.body)
             };
         }
         else{
@@ -225,7 +204,7 @@ class MultimediaAPI extends RESTDataSource {
             const response = await this.delete(`/tablero/deleteMultimedia/${idTablero}/${idMultimedia}`);
             return {
                 status: 200,
-                data: response.message
+                data: this.tableroReducer(response)
             };
         } catch (error) {
             return {
@@ -282,19 +261,26 @@ class MultimediaAPI extends RESTDataSource {
 
     multimediaReducer(response){
         return{
-            id: response.multimedia._id.$oid || "0000",
+            id: response.multimedia.id || "0000",
             descripcion: response.multimedia.descripcion,
             url: response.multimedia.url,
             formato: response.multimedia.formato,
             tamano: response.multimedia.tamano,
             id_bucket: response.multimedia.id_bucket,
             usuario_creador_id: response.multimedia.usuario_creador_id,
-            etiquetas_relacionadas_ids: response.multimedia.etiquetas_relacionada_ids,
-            tableros_agregados_ids:response.multimedia.tableros_agregado_ids,
+            etiquetas_relacionadas_ids: response.multimedia.etiquetas_relacionadas_ids,
+            tableros_agregados_ids:response.multimedia.tableros_agregados_ids,
             created_at: response.multimedia.created_at,
             updated_at: response.multimedia.updated_at,
         }
     };
+
+    tableroReducer(response){
+        return{
+            id: response.tablero.id || "0000",
+            multimedia_agregada_ids: response.tablero.multimedia_agregada_ids
+        }
+    }
     
 }
 

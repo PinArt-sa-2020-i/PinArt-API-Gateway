@@ -31,12 +31,12 @@ const multimediaTypeDefs = gql`
 
     extend type Mutation{
         addMultimedia( multimedia: MultimediaInput) : Multimedia
-        deleteTagMultimedia(idMultimedia: String, idTag:String): String
-        addTagMultimedia(idMultimedia: String, idTag:String): String
+        deleteTagMultimedia(idMultimedia: String, idTag:String): Multimedia
+        addTagMultimedia(idMultimedia: String, idTag:String): Multimedia
         deleteMultimedia(idMultimedia:String): String
-        updateMultimedia(multimedia:UpdateMultimediaInput!):String
-        addMultimediaTablero(idMultimedia: String, idTablero:String): String
-        deleteMultimediaTablero(idMultimedia:String, idTablero:String): String
+        updateMultimedia(multimedia:UpdateMultimediaInput!):Multimedia
+        addMultimediaTablero(idMultimedia: String, idTablero:String): Tablero
+        deleteMultimediaTablero(idMultimedia:String, idTablero:String): Tablero
         deleteTablero_multimedia(idTablero:String):String
         deleteUsuario_multimedia(idUsuario:String):String
         deleteEtiqueta_multimedia(idEtiqueta:String):String

@@ -14,7 +14,7 @@ const MultimediaAPI = require('./dataSources/multimedia_api');
 const ConfigAccountAPI = require('./dataSources/configAccount_api');
 const ProfileAPI = require("./dataSources/profile_api");
 const AuthAPI = require("./dataSources/auth_api");
-
+const BucketAPI = require('./dataSources/bucket_api');
 //Se crea el servidor
 const server = new ApolloServer({
      typeDefs,
@@ -25,7 +25,8 @@ const server = new ApolloServer({
        multimediaAPI: new MultimediaAPI(),
        profileAPI: new ProfileAPI(),
        authAPI: new AuthAPI(),
-       configAccountAPI: new ConfigAccountAPI()
+       configAccountAPI: new ConfigAccountAPI(),
+       bucketAPI: new BucketAPI()
      })
 });
 
