@@ -31,7 +31,7 @@ const labelsTypeDefs = gql`
     }
     extend type Mutation {
         createLabel(label: LabelInput!): Label!
-        updateLabel(label: LabelInput): Label!
+        updateLabel(id: Int!, label: LabelInput): Label!
         deleteLabel(id: Int!): Int!
         addLabelBoard(idBoard: Int!, idLabels: [Int!]): LabelBoard!
         removeLabelBoard(idBoard: Int!, idLabel: Int!): LabelBoard!

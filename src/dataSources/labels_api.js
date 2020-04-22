@@ -11,6 +11,11 @@ class LabelsAPI extends RESTDataSource {
     this.baseURL = `http://${serverConfig.labels_url}:${serverConfig.labels_port}`;
   }
 
+  async getAllLabels(){
+    let res = await this.get("/label");
+    return res;
+  }
+
   async createLabel(label) {
     label = new Object(JSON.parse(JSON.stringify(label)));
     let resLabel = await this.put("/label", label);
