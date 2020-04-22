@@ -5,9 +5,9 @@ module.exports = {
     example_entryPoint:process.env.EXAMPLE_ENTRY || 'sa-auth-ms/resources/',
 
     //Data server de Multimedia Feed
-    feed_url: process.env.MULTIMEDIA_URL || '18.214.200.193',
-    feed_port: process.env.MULTIMEDIA_PORT || '3001',
-    feed_entryPoint: process.env.MULTIMEDIA_ENTRY || '',
+    feed_url: process.env.FEED_URL || '18.214.200.193',
+    feed_port: process.env.FEED_PORT || '3001',
+    feed_entryPoint: process.env.FEED_ENTRY || '',
 
     //Data server de MultimediaAPI
     multimedia_url: process.env.MULTIMEDIA_URL || '18.214.200.193',
@@ -28,5 +28,10 @@ module.exports = {
     auth_url: process.env.AUTH_URL || "3.227.65.124",
     auth_port: process.env.AUTH_PORT || "4000",
     auth_entryPoint: process.env.AUTH_ENTRY || "users/",
+
+    //Bucket API
+    bucket_url: process.env.AUTH_URL || "3.227.65.124",
+    bucket_port: process.env.AUTH_PORT || "8081",
+    bucket_entryPoint: process.env.AUTH_ENTRY || "api/S3Bucket/",
 };
 

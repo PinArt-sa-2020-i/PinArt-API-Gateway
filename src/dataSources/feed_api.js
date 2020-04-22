@@ -35,6 +35,7 @@ class FeedAPI extends RESTDataSource {
     //Realiza una peticion get para obtener la multimedia dado el id de una Table
     async getMultimediaByTable(id){
         const response = await this.get(`getMultimediaByTable/${id}`);
+        console.log(response);
         return Array.isArray(response.multimediaByTable)
         ? response.multimediaByTable.map(multimedia => this.multimediaWithIdReducer(multimedia))
         : [];
@@ -78,7 +79,8 @@ class FeedAPI extends RESTDataSource {
             tableros_agregados_ids: multimedia.tableros_agregado_ids,
             created_at: multimedia.created_at,
             updated_at: multimedia.updated_at,
-            tamano: multimedia.tamano
+            tamano: multimedia.tamano,
+            id: multimedia.id
         };
     }
 
