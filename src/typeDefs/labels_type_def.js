@@ -20,14 +20,14 @@ const labelsTypeDefs = gql`
     }
     type LabelUser {
         id: Int!
-        relatedLabels: [Int!]
+        relatedLabels: [Label]
     }
 
     extend type Query {
         getAllLabels: [Label]
         labelById(id: Int!): Label
         boardLabels(boardId: Int!): LabelBoard
-        userLabels(userId: Int!): [Label]
+        userLabels(userId: Int!): LabelUser
     }
     extend type Mutation {
         createLabel(label: LabelInput!): Label!
@@ -35,7 +35,7 @@ const labelsTypeDefs = gql`
         deleteLabel(id: Int!): Int!
         addLabelBoard(idBoard: Int!, idLabels: [Int!]): LabelBoard!
         removeLabelBoard(idBoard: Int!, idLabel: Int!): LabelBoard!
-        addLabelUser(idUser: Int!, idLabel: Int!): LabelUser!
+        addLabelUser(idUser: Int!, idLabel: [Int!]): LabelUser!
         removeLabelUser(idUser: Int!, idLabel: Int!): LabelUser!
     }
 

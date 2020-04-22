@@ -12,8 +12,7 @@ class LabelsAPI extends RESTDataSource {
   }
 
   async getAllLabels(){
-    let res = await this.get("/label");
-    return res;
+    return await this.get("/label");
   }
 
   async createLabel(label) {
@@ -22,8 +21,10 @@ class LabelsAPI extends RESTDataSource {
     return this.labelReducer(resLabel);
   }
 
-  async updateLabel(label) {
+  async updateLabel(id, label) {
+    label.id = id;
     label = new Object(JSON.parse(JSON.stringify(label)));
+    console.log(label);
     let resLabel = await this.post("/label", label);
     return this.labelReducer(resLabel)
   }
@@ -35,7 +36,7 @@ class LabelsAPI extends RESTDataSource {
   }
 
   async deleteLabel(id) {
-    let res = await this.delete("/label", id);
+    let res = await this.delete(`/label/${id}`);
     return res.id;
   }
 
@@ -44,14 +45,13 @@ class LabelsAPI extends RESTDataSource {
     return this.labelBoardReducer(res);
   }
 
-  async userLabels() {
-    return {msg: "Not supported yet"};
+  async userLabels(id) {
+    let res = await this.get(`/label/board/${id}`);
+    return this.labelUserReducer(res);
   }
 
   async addLabelBoard(id, relatedLabels) {
-    console.log({relatedLabels});
     let res = await this.put(`/label/board/${id}`,{relatedLabels});
-    console.log(res);
     return this.labelBoardReducer(res);
   }
 
@@ -59,8 +59,9 @@ class LabelsAPI extends RESTDataSource {
     return {msg: "not supported yet"};
   }
 
-  async addLabelUser() {
-    return {msg: "not supported yet"};
+  async addLabelUser(id, relatedLabels) {
+    let res = await this.put(`/label/board/${id}`,{relatedLabels});
+    return this.labelUserReducer(res);
   }
 
   async removeLabelUser() {
