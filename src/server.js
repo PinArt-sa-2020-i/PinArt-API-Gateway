@@ -1,4 +1,4 @@
-require('dotenv').config();
+//require('dotenv').config();
 module.exports = {
     //Data server de ExampleAPI
     example_url:process.env.EXAMPLE_URL || 'http://ec2-54-158-114-74.compute-1.amazonaws.com/',

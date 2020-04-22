@@ -34,16 +34,20 @@ class LabelsAPI extends RESTDataSource {
     return res.id;
   }
 
-  async boardLabels() {
-    return {msg: "Not supported yet"};
+  async boardLabels(id) {
+    let res = await this.get(`/label/board/${id}`);
+    return this.labelBoardReducer(res);
   }
 
   async userLabels() {
     return {msg: "Not supported yet"};
   }
 
-  async addLabelBoard() {
-    return {msg: "not supported yet"};
+  async addLabelBoard(id, relatedLabels) {
+    console.log({relatedLabels});
+    let res = await this.put(`/label/board/${id}`,{relatedLabels});
+    console.log(res);
+    return this.labelBoardReducer(res);
   }
 
   async removeLabelBoard() {
