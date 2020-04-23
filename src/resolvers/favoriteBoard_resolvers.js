@@ -15,8 +15,8 @@ const favoriteBoardResolvers = {
     },
 
     Mutation: {
-        createUser: (_, {id}, {dataSources}) => dataSources.favoriteboardAPI.createUser(id),
-        deleteUser: (_, {id}, {dataSources}) => dataSources.favoriteboardAPI.deleteUser(id),
+        createUserBoards: (_, {id}, {dataSources}) => dataSources.favoriteboardAPI.createUser(id),
+        deleteUserBoards: (_, {id}, {dataSources}) => dataSources.favoriteboardAPI.deleteUser(id),
 
 
         createBoard: (_, {user_id,board}, {dataSources}) => dataSources.favoriteboardAPI.createBoard(user_id,board),

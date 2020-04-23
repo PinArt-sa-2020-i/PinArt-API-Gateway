@@ -91,7 +91,7 @@ class FavoriteBoardAPI extends RESTDataSource {
 
     async createBoard(user_id,board){
         board = new Object(JSON.parse(JSON.stringify(board)));
-        const response = await this.post(`board/create/user/${user_id}/`, board);
+        const response = await this.post(`/board/create/user/${user_id}/`, board);
         return this.boardReducer(response);
     }
 

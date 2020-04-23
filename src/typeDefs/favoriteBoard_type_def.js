@@ -3,7 +3,7 @@ const { gql } = require('apollo-server');
 
 //Se crea el typeDef
 const favoriteBoardDefs = gql`
-    type User {
+    type UserBoards {
         id: Int!
     }
     type Board {
@@ -11,20 +11,19 @@ const favoriteBoardDefs = gql`
         name: String!
         description: String
         createdAt: String
-        user: User
-        
+        user: UserBoards
     }
     
    
     type BoardFollow {
         id: Int!
-        user: User
+        user: UserBoards
         board: Board
     }
     type UserFollow {
         id: Int!
-        userFollower: User
-        userFollowing: User
+        userFollower: UserBoards
+        userFollowing: UserBoards
     }
     
     input UserInput {
@@ -44,13 +43,13 @@ const favoriteBoardDefs = gql`
     }
      
     extend type Query {
-        allUser: [User]!
+        allUser: [UserBoards]!
         allBoard: [Board]!
         allUserFollow: [UserFollow]!
         allBoardFollow: [BoardFollow]
         
-        userById (id: Int!): User!
-        usersFollowingByFollower (follower_id: Int!): [User]!
+        userById (id: Int!): UserBoards!
+        usersFollowingByFollower (follower_id: Int!): [UserBoards]!
         allBoardsByUser(id: Int!): [Board]!
         boardById(id: Int!): Board!
         userFollowById(id: Int!): UserFollow!
@@ -60,8 +59,8 @@ const favoriteBoardDefs = gql`
         
     }
     extend type Mutation {
-        createUser(id: Int!): Int!
-        deleteUser(id: Int!): Int
+        createUserBoards(id: Int!): Int!
+        deleteUserBoards(id: Int!): Int
         createBoard(user_id:Int!,board:BoardInput!):Board       
         updateBoard(id: Int!, board: BoardInput!): Board!
         deleteBoard(id: Int!): Int
