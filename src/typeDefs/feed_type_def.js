@@ -12,6 +12,7 @@ const feedTypeDefs = gql`
         multimedia_relacionada_ids: [String]
     }
 
+    
 
     extend type Query {
         getMultimediaById(id: String!): Multimedia
@@ -19,7 +20,7 @@ const feedTypeDefs = gql`
         getMultimediaByTag(id: String!): [Multimedia]
         getMultimediaByTable(id: String!): [Multimedia]
         getUsersFeed(idUsuario: String): [Multimedia]
-        getTagsFeed(idUsuario: String): [Multimedia]
+        getTagsFeed(idTag: String): [Multimedia]
     }
 `;
 

@@ -14,14 +14,14 @@ const feedResolver = {
             return await dataSources.feedAPI.getUsersFeed(followedUsers);
 
         },
-        getTagsFeed: async(_, { idUsuario }, {dataSources}) => {
+        getTagsFeed: async(_, { idTag }, {dataSources}) => {
             //Aca se simula la funcion de Elsa
             //Le envio este idUsuario y me regresa los ids de las etiquetas que sigue
             
             //Supongamos que eso tiene este formato:
             const followedTags = ["LOL", "G2"];
             return await dataSources.feedAPI.getTagsFeed(followedTags)
-        }
+        },
     }
 };
 

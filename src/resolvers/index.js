@@ -7,6 +7,7 @@ const authResolvers = require("./auth_resolver");
 const configAccountResolvers = require('./configAccount_resolvers');
 const multimediaResolvers = require('./multimedia_resolvers');
 const feedResolvers = require('./feed_resolvers');
+const searchResolvers = require('./search_resolver');
 
 const resolvers = lodash.merge(
   exampleResolvers,
@@ -14,7 +15,8 @@ const resolvers = lodash.merge(
   authResolvers,
   configAccountResolvers, 
   multimediaResolvers,
-  feedResolvers
+  feedResolvers,
+  searchResolvers
 );
 
 
