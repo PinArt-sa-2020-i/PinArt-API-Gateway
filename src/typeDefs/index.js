@@ -6,6 +6,7 @@ const configAccountTypeDefs = require("./configAccount_type_def");
 const profileTypeDefs = require("./profile_type_def");
 const authTypeDefs = require("./auth_type_def");
 const multimediaTypeDefs = require("./multimedia_type_def");
+const searchTypeDefs = require("./search_type_def");
 
 const schemaArrays = [
                       root, 
@@ -14,7 +15,8 @@ const schemaArrays = [
                       authTypeDefs, 
                       configAccountTypeDefs, 
                       multimediaTypeDefs,
-                      feedTypeDefs
+                      feedTypeDefs,
+                      searchTypeDefs
                      ];
 
 

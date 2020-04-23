@@ -35,11 +35,23 @@ class FeedAPI extends RESTDataSource {
     //Realiza una peticion get para obtener la multimedia dado el id de una Table
     async getMultimediaByTable(id){
         const response = await this.get(`getMultimediaByTable/${id}`);
-        console.log(response);
         return Array.isArray(response.multimediaByTable)
         ? response.multimediaByTable.map(multimedia => this.multimediaWithIdReducer(multimedia))
         : [];
     }
+
+    //Realiza una peticion get para obtener los usuarios relacionados a un usuario dado
+    async getRelatedUsersByUserId(id){
+        const response = await this.get(`getRelatedUsersByUserId/${id}`);
+        return response;
+    }
+
+    //Realiza una peticion get para obtener los tags relacionados a un tag dado
+    async getRelatedTagsByTag(id){
+        const response = await this.get(`getRelatedTagsByTag/${id}`);
+        return response;
+    }
+
 
     //Realiza una peticion post para obtener el feed de un usuario dados sus usuarios seguidos
     async getUsersFeed(followedUsers){
