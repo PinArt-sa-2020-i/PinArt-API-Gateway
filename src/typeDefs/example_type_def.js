@@ -10,7 +10,6 @@ const exampleTypeDefs = gql`
     extend type Query {
         getAllExamples: [Example]
     }
-
 `;
 
 //Se exporta el typeDef

@@ -8,6 +8,7 @@ const configAccountResolvers = require('./configAccount_resolvers');
 const multimediaResolvers = require('./multimedia_resolvers');
 const feedResolvers = require('./feed_resolvers');
 const searchResolvers = require('./search_resolver');
+const favoriteBoardResolvers = require("./favoriteBoard_resolvers");
 
 const resolvers = lodash.merge(
   exampleResolvers,
@@ -16,7 +17,8 @@ const resolvers = lodash.merge(
   configAccountResolvers, 
   multimediaResolvers,
   feedResolvers,
-  searchResolvers
+  searchResolvers,
+  favoriteBoardResolvers,
 );
 
 
@@ -24,3 +26,4 @@ const resolvers = lodash.merge(
 
 //Exporta los resolver
 module.exports = resolvers;
+

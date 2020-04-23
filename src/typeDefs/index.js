@@ -7,6 +7,7 @@ const profileTypeDefs = require("./profile_type_def");
 const authTypeDefs = require("./auth_type_def");
 const multimediaTypeDefs = require("./multimedia_type_def");
 const searchTypeDefs = require("./search_type_def");
+const favoriteBoardDefs = require("./favoriteBoard_type_def");
 
 const schemaArrays = [
                       root, 
@@ -16,9 +17,11 @@ const schemaArrays = [
                       configAccountTypeDefs, 
                       multimediaTypeDefs,
                       feedTypeDefs,
-                      searchTypeDefs
+                      searchTypeDefs,
+                      favoriteBoardDefs
                      ];
 
 
 //Exporta los typeDefs
 module.exports = schemaArrays;
+
