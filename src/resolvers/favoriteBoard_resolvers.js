@@ -24,11 +24,10 @@ const favoriteBoardResolvers = {
         deleteBoard: (_, {id}, {dataSources}) => dataSources.favoriteboardAPI.deleteBoard(id),
 
 
-        createUserFollow: (_, {userfollow}, {dataSources}) => dataSources.favoriteboardAPI.createUserFollow(userfollow),
+        createUserFollow: (_, {userFollowing, userFollower, userfollow}, {dataSources}) => dataSources.favoriteboardAPI.createUserFollow(userFollowing, userFollower,userfollow),
         deleteUserFollow: (_, {id}, {dataSources}) => dataSources.favoriteboardAPI.deleteUserFollow(id),
 
-
-        createBoardFollow: (_, {boardfollow}, {dataSources}) => dataSources.favoriteboardAPI.createBoardFollow(boardfollow),
+        createBoardFollow: (_, {user_id, board_id, boardfollow}, {dataSources}) => dataSources.favoriteboardAPI.createBoardFollow(user_id, board_id,boardfollow),
         deleteBoardFollow: (_, {id}, {dataSources}) => dataSources.favoriteboardAPI.deleteBoardFollow(id),
 
 

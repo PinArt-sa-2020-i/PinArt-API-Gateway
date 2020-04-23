@@ -28,7 +28,7 @@ class FavoriteBoardAPI extends RESTDataSource {
             : [];
     }
 
-    //arreglar metodo hola
+
     async getAllUserFollow(){
         const response = await this.get('/userfollow/getAll');
         return Array.isArray(response)
@@ -37,9 +37,9 @@ class FavoriteBoardAPI extends RESTDataSource {
     }
 
     async getAllBoardFollow(){
-        const response = await this.get('boardfollow');
+        const response = await this.get('boardfollow/getAll');
         return Array.isArray(response)
-            ? response.map((boardfollow) => this.boardReducer(boardfollow))
+            ? response.map((boardfollow) => this.boardfollowReducer(boardfollow))
             : [];
     }
 
@@ -65,19 +65,19 @@ class FavoriteBoardAPI extends RESTDataSource {
             : [];
     }
 
-
-
-
     async getBoardbyId(id) {
-        return {msg: "not supported yet"};
+        const response = await this.get(`/board/${id}`);
+        return this.boardReducer(response);
     }
 
     async getUserFollowbyId(id) {
-        return {msg: "not supported yet"};
+        const response = await this.get(`/userfollow/${id}`);
+        return this.userfollowReducer(response);
     }
 
     async getBoardFollowbyId(id) {
-        return {msg: "not supported yet"};
+        const response = await this.get(`/boardfollow/${id}`);
+        return this.boardfollowReducer(response);
     }
 
     //Realiza una peticion post
@@ -95,12 +95,17 @@ class FavoriteBoardAPI extends RESTDataSource {
         return this.boardReducer(response);
     }
 
-    async createUserFollow(userfollow){
-        return {msg: "not supported yet"};
+    async createUserFollow(userFollowing, userFollower, userfollow){
+        userfollow= new Object(JSON.parse(JSON.stringify(userfollow)));
+        const response = await this.post(`/userfollow/create/userFollowing/${userFollowing}/userFollower/${userFollower}/`, userfollow);
+        return this.userfollowReducer(response);
     }
 
-    async createBoardFollow(boardfollow){
-        return {msg: "not supported yet"};
+    async createBoardFollow(user_id, board_id,boardfollow){
+        boardfollow= new Object(JSON.parse(JSON.stringify(boardfollow)));
+        const response = await this.post(`boardfollow/create/user/${user_id}/board/${board_id}/`, boardfollow);
+        return this.boardfollowReducer(response);
+            
     }
 
     // Realiza la peticion  put
@@ -147,23 +152,23 @@ class FavoriteBoardAPI extends RESTDataSource {
             id: board.id || 0,
             name: board.name,
             description: board.description,
-            id_user:board.user_id
+            user:board.user
         };
     }
 
     boardfollowReducer(boardfollow) {
         return {
             id: boardfollow.id || 0,
-            board_id: boardfollow.board_id,
-            user_id: boardfollow.user_id
+            board: boardfollow.board,
+            user: boardfollow.user
         };
     }
 
     userfollowReducer(userfollow) {
         return {
             id: userfollow.id || 0,
-            user_follower_id: userfollow.user_follower_id,
-            user_following_id: userfollow.user_following_id
+            userFollower: userfollow.userFollower,
+            userFollowing: userfollow.userFollowing
         };
     }
     

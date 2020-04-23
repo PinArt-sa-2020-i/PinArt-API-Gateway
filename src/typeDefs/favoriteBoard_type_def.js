@@ -11,17 +11,20 @@ const favoriteBoardDefs = gql`
         name: String!
         description: String
         createdAt: String
-        id_user:Int
+        user: User
+        
     }
+    
+   
     type BoardFollow {
         id: Int!
-        board_id: String!
-        user_id: String!
+        user: User
+        board: Board
     }
     type UserFollow {
         id: Int!
-        user_follower_id: Int!
-        user_following_id: Int!
+        userFollower: User
+        userFollowing: User
     }
     
     input UserInput {
@@ -32,19 +35,19 @@ const favoriteBoardDefs = gql`
         description: String       
     }
        input BoardFollowInput {
-        board_id: String!
-        user_id: String!
+        board_id: Int
+        user_id: Int
     }
     input UserFollowInput {
-        user_follower_id: Int!
-        user_following_id: Int!
+        user_follower_id: Int
+        user_following_id: Int
     }
      
     extend type Query {
         allUser: [User]!
         allBoard: [Board]!
         allUserFollow: [UserFollow]!
-        allBoardFollow: [BoardFollow]!
+        allBoardFollow: [BoardFollow]
         
         userById (id: Int!): User!
         usersFollowingByFollower (follower_id: Int!): [User]!
@@ -62,9 +65,9 @@ const favoriteBoardDefs = gql`
         createBoard(user_id:Int!,board:BoardInput!):Board       
         updateBoard(id: Int!, board: BoardInput!): Board!
         deleteBoard(id: Int!): Int
-        createUserFollow(userFollow: UserFollowInput!): UserFollow!
+        createUserFollow(  userFollowing:Int!, userFollower:Int!,userfollow: UserFollowInput): UserFollow
         deleteUserFollow(id: Int!): Int
-        createBoardFollow(boardFollow: BoardFollowInput!): BoardFollow!
+        createBoardFollow(user_id:Int!, board_id:Int!, boardfollow:BoardFollowInput): BoardFollow
         deleteBoardFollow(id: Int!): Int
         
     }
