@@ -22,6 +22,11 @@ class ProfileAPI extends RESTDataSource {
     return this.userReducer(response);
   }
 
+  async getUserbyName(name) {
+    const response = await this.get(`user/name/${name}`);
+    return this.userReducer(response);
+  }
+
   async createUser(user) {
     user = new Object(JSON.parse(JSON.stringify(user)));
     const response = await this.post("user", user);
