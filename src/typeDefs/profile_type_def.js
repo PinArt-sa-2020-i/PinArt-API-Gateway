@@ -113,6 +113,7 @@ const profileTypeDefs = gql`
   extend type Query {
     allUsers: [User]!
     userById(id: Int!): User!
+    userByName(name: String!): User!
   }
 
   extend type Mutation {
