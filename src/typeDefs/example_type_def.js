@@ -6,6 +6,7 @@ const exampleTypeDefs = gql`
     type Example{
         id: String!
     }
+
     extend type Query {
         getAllExamples: [Example]
     }

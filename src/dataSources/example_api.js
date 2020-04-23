@@ -8,11 +8,11 @@ const serverConfig = require('../server');
 class ExampleAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = `http://${serverConfig.example_url}:${serverConfig.example_port}/${serverConfig.example_entryPoint}`;
+        this.baseURL = `http://${serverConfig.example_url}:${serverConfig.example_port}/${serverConfig.example_entryPoint}`;    
     }
 
-    //Realiza una peticion get para obtener todos los usuarios
-    async getAllExample() {
+     //Realiza una peticion get para obtener todos los usuarios
+    async getAllExample() {   
         return [{id:"0001"}, {id:"0002"}]
     }
 }
