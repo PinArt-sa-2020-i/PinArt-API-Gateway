@@ -6,7 +6,7 @@ const favoriteBoardResolvers = {
         allUserFollow: (_, __, { dataSources }) => dataSources.favoriteboardAPI.getAllUserFollow(),
         allBoardFollow: (_, __, { dataSources }) => dataSources.favoriteboardAPI.getAllBoardFollow(),
 
-        userById: (_, { id }, {dataSources}) => dataSources.favoriteboardAPI.getUserbyId(id),
+        userByIdBoards: (_, { id }, {dataSources}) => dataSources.favoriteboardAPI.getUserbyId(id),
         usersFollowingByFollower: (_, { follower_id }, {dataSources}) => dataSources.favoriteboardAPI.getUsersFollowingByFollower(follower_id),
         allBoardsByUser:(_, { id }, {dataSources}) => dataSources.favoriteboardAPI.getAllBoardsByUser(id),
         boardById: (_, { id }, {dataSources}) => dataSources.favoriteboardAPI.getBoardbyId(id),

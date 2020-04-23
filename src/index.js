@@ -32,7 +32,8 @@ const server = new ApolloServer({
        bucketAPI: new BucketAPI(),
        favoriteboardAPI: new FavoriteBoardAPI(),
        labelsAPI: new LabelsAPI()
-})
+    })
+});
 
 //Se corre dicho servidor
 server.listen({ port: 5000 }).then(({ url }) => {

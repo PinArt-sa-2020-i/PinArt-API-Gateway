@@ -22,8 +22,6 @@ const resolvers = lodash.merge(
   labelsResolvers
 );
 
-//Une todos los resolver
-const resolvers = lodash.merge(exampleResolvers, labelsResolvers);
 //const resolvers = lodash.merge(exampleResolvers, others, others);
 
 //Exporta los resolver

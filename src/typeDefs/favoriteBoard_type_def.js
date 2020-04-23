@@ -26,7 +26,7 @@ const favoriteBoardDefs = gql`
         userFollowing: UserBoards
     }
     
-    input UserInput {
+    input UserInputBoards {
        id: Int!
     }
     input BoardInput {
@@ -48,7 +48,7 @@ const favoriteBoardDefs = gql`
         allUserFollow: [UserFollow]!
         allBoardFollow: [BoardFollow]
         
-        userById (id: Int!): UserBoards!
+        userByIdBoards (id: Int!): UserBoards!
         usersFollowingByFollower (follower_id: Int!): [UserBoards]!
         allBoardsByUser(id: Int!): [Board]!
         boardById(id: Int!): Board!
