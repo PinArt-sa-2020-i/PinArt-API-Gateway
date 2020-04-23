@@ -1,1 +1,0 @@
-# PinArt-API-Gateway
