@@ -9,7 +9,7 @@ const multimediaResolvers = require('./multimedia_resolvers');
 const feedResolvers = require('./feed_resolvers');
 const searchResolvers = require('./search_resolver');
 const favoriteBoardResolvers = require("./favoriteBoard_resolvers");
-
+const labelsResolvers = require('./labels_resolver');
 const resolvers = lodash.merge(
   exampleResolvers,
   profileResolvers,
@@ -19,8 +19,8 @@ const resolvers = lodash.merge(
   feedResolvers,
   searchResolvers,
   favoriteBoardResolvers,
+  labelsResolvers
 );
-
 
 //const resolvers = lodash.merge(exampleResolvers, others, others);
 

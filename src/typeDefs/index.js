@@ -8,7 +8,7 @@ const authTypeDefs = require("./auth_type_def");
 const multimediaTypeDefs = require("./multimedia_type_def");
 const searchTypeDefs = require("./search_type_def");
 const favoriteBoardDefs = require("./favoriteBoard_type_def");
-
+const labelTypeDefs = require("./labels_type_def");
 const schemaArrays = [
                       root, 
                       exampleTypeDefs, 
@@ -18,10 +18,9 @@ const schemaArrays = [
                       multimediaTypeDefs,
                       feedTypeDefs,
                       searchTypeDefs,
-                      favoriteBoardDefs
+                      favoriteBoardDefs,
+                      labelTypeDefs
                      ];
-
-
 //Exporta los typeDefs
 module.exports = schemaArrays;
 
