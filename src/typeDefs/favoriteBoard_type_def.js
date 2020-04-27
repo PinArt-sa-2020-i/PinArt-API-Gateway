@@ -13,7 +13,6 @@ const favoriteBoardDefs = gql`
         createdAt: String
         user: UserBoards
     }
-    
    
     type BoardFollow {
         id: Int!
@@ -22,8 +21,8 @@ const favoriteBoardDefs = gql`
     }
     type UserFollow {
         id: Int!
-        userFollower: UserBoards
-        userFollowing: UserBoards
+        userFollower: User
+        userFollowing: User
     }
     
     input UserInputBoards {
@@ -31,15 +30,16 @@ const favoriteBoardDefs = gql`
     }
     input BoardInput {
         name: String!
-        description: String       
+        description: String
+        user_id: Int!       
     }
        input BoardFollowInput {
         board_id: Int
         user_id: Int
     }
     input UserFollowInput {
-        user_follower_id: Int
-        user_following_id: Int
+        userFollower_id: Int
+        userFollowing_id: Int
     }
      
     extend type Query {
@@ -54,19 +54,19 @@ const favoriteBoardDefs = gql`
         boardById(id: Int!): Board!
         userFollowById(id: Int!): UserFollow!
         boardFollowById(id: Int!): BoardFollow!
-        
+        allBoardsByName(name: String!): [Board]!
            
         
     }
     extend type Mutation {
         createUserBoards(id: Int!): Int!
         deleteUserBoards(id: Int!): Int
-        createBoard(user_id:Int!,board:BoardInput!):Board       
+        createBoard(board:BoardInput!):Board       
         updateBoard(id: Int!, board: BoardInput!): Board!
         deleteBoard(id: Int!): Int
-        createUserFollow(  userFollowing:Int!, userFollower:Int!,userfollow: UserFollowInput): UserFollow
+        createUserFollow( userfollow: UserFollowInput): UserFollow
         deleteUserFollow(id: Int!): Int
-        createBoardFollow(user_id:Int!, board_id:Int!, boardfollow:BoardFollowInput): BoardFollow
+        createBoardFollow( boardfollow:BoardFollowInput): BoardFollow
         deleteBoardFollow(id: Int!): Int
         
     }
