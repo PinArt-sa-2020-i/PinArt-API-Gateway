@@ -1,7 +1,15 @@
+const verficateAuthentication = (data) => {if(data.id == null){ throw new ApolloError("Need Authentication", 400);}}
+
 const searchResolver = {
     Query: {
-        getRelatedUsersByUser: (_, { idUsuario }, {dataSources}) => dataSources.feedAPI.getRelatedUsersByUserId(idUsuario),
-        getRelatedTagsByTag: (_, { idTag }, {dataSources}) => dataSources.feedAPI.getRelatedTagsByTag(idTag),
+        getRelatedUsersByUser: async (_, { idUsuario }, {dataSources, data}) => {
+            verficateAuthentication(data);
+            return await dataSources.feedAPI.getRelatedUsersByUserId(idUsuario)
+        },
+        getRelatedTagsByTag: async (_, { idTag }, {dataSources, data}) => {
+            verficateAuthentication(data);
+            return await dataSources.feedAPI.getRelatedTagsByTag(idTag)
+        },
     }
 };
 

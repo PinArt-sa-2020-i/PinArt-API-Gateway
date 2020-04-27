@@ -5,21 +5,18 @@ const authResolver = {
   Mutation: {
     registerUser: (_, { register }, { dataSources }) =>
       dataSources.authAPI.registerUser(register),
+
+
     authenticateUser: async (_, { auth }, { dataSources }) => {
       //Se autentifica el usuario
       //Datos de la auth
-      const dataAuth = {
-        username: auth.username,
-        password: auth.password
-      }
+      const dataAuth = {username: auth.username,password: auth.password}
 
       //Se realiza la peticion
       const responseAuth = await dataSources.authAPI.authenticateUser(dataAuth)
 
       //Se valida la respuesta
-      if(responseAuth.status != 200){
-        return new AuthenticationError(`${responseAuth.status} - ${responseAuth.data}`);
-      }
+      if(responseAuth.status != 200){return new AuthenticationError(`${responseAuth.status} - ${responseAuth.data}`);}
       
       //Se crea la sesion
       //Data de la sesion
@@ -34,9 +31,7 @@ const authResolver = {
       const responseSesion = await dataSources.configAccountAPI.createSession(dataSesion);
 
       //Se valida la respuesta
-      if(responseSesion.status != 200){
-        return new AuthenticationError(`${responseAuth.status} - ${responseAuth.data}`);
-      }
+      if(responseSesion.status != 200){return new AuthenticationError(`${responseAuth.status} - ${responseAuth.data}`);}
 
       //Se retorna la respuesta
       return {

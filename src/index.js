@@ -18,6 +18,9 @@ const FavoriteBoardAPI = require("./dataSources/favoriteBoard_api");
 const LabelsAPI = require('./dataSources/labels_api');
 
 
+//Authentication
+const authentication = require('./utils/authentication');
+
 //Se crea el servidor
 const server = new ApolloServer({
      typeDefs,
@@ -33,9 +36,7 @@ const server = new ApolloServer({
        favoriteboardAPI: new FavoriteBoardAPI(),
        labelsAPI: new LabelsAPI()
     }),
-    context: async ({ req }) => {
-      return {data: req};
-    }
+    context: authentication
 });
 
 //Se corre dicho servidor
