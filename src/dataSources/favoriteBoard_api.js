@@ -54,7 +54,7 @@ class FavoriteBoardAPI extends RESTDataSource {
     async getUsersFollowingByFollower(follower_id) {
         const response = await this.get(`/userfollow/getUsersFollowingByFollower/${follower_id}`);
         return Array.isArray(response)
-            ? response.map((user) => this.boardReducer(user))
+            ? response.map((user) => this.userfollowReducer(user))
             : [];
     }
 
@@ -70,6 +70,13 @@ class FavoriteBoardAPI extends RESTDataSource {
         return this.boardReducer(response);
     }
 
+    async getallBoardsByName(name) {
+        const response = await this.get(`/board/getAllBoardsByName/${name}`);
+        return Array.isArray(response)
+            ? response.map((board) => this.boardReducer(board))
+            : [];
+    }
+
     async getUserFollowbyId(id) {
         const response = await this.get(`/userfollow/${id}`);
         return this.userfollowReducer(response);
@@ -80,6 +87,10 @@ class FavoriteBoardAPI extends RESTDataSource {
         return this.boardfollowReducer(response);
     }
 
+
+
+
+
     //Realiza una peticion post
 
     async createUser(id){
@@ -89,21 +100,21 @@ class FavoriteBoardAPI extends RESTDataSource {
         return response;
     }
 
-    async createBoard(user_id,board){
+    async createBoard(board){
         board = new Object(JSON.parse(JSON.stringify(board)));
-        const response = await this.post(`/board/create/user/${user_id}/`, board);
+        const response = await this.post(`/board/create/`, board);
         return this.boardReducer(response);
     }
 
-    async createUserFollow(userFollowing, userFollower, userfollow){
+    async createUserFollow(userfollow){
         userfollow= new Object(JSON.parse(JSON.stringify(userfollow)));
-        const response = await this.post(`/userfollow/create/userFollowing/${userFollowing}/userFollower/${userFollower}/`, userfollow);
+        const response = await this.post(`/userfollow/create`, userfollow);
         return this.userfollowReducer(response);
     }
 
-    async createBoardFollow(user_id, board_id,boardfollow){
+    async createBoardFollow(boardfollow){
         boardfollow= new Object(JSON.parse(JSON.stringify(boardfollow)));
-        const response = await this.post(`boardfollow/create/user/${user_id}/board/${board_id}/`, boardfollow);
+        const response = await this.post(`boardfollow/create/`, boardfollow);
         return this.boardfollowReducer(response);
             
     }
@@ -132,11 +143,13 @@ class FavoriteBoardAPI extends RESTDataSource {
     }
 
     async deleteBoardFollow(id){
-        return {msg: "not supported yet"};
+        const response = await this.delete(`/boardfollow/delete/${id}/`);
+        return response.id;
     }
 
     async deleteUserFollow(id){
-        return {msg: "not supported yet"};
+        const response = await this.delete(`/userfollow/delete/${id}/`);
+        return response.id;
     }
 
 // Reducers
