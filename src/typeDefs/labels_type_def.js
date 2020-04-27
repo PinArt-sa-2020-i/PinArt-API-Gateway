@@ -28,6 +28,7 @@ const labelsTypeDefs = gql`
         labelById(id: Int!): Label
         boardLabels(boardId: Int!): LabelBoard
         userLabels(userId: Int!): LabelUser
+        searchLabel(fragment: String): [Label]
     }
     extend type Mutation {
         createLabel(label: LabelInput!): Label!

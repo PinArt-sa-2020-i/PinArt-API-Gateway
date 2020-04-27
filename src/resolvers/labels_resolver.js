@@ -3,6 +3,10 @@ const verficateAuthentication = (data) => {if(data.id == null){ throw new Apollo
 //Crea los resolver de example
 const labelsResolvers = {
   Query: {
+     searchLabel: async (_, { fragment }, { dataSources, data }) => {
+        verficateAuthentication(data);
+        return await dataSources.labelsAPI.searchLabel(fragment)
+     },      
     getAllLabels: async (_, __, { dataSources, data }) => {
         verficateAuthentication(data);
         return await dataSources.labelsAPI.getAllLabels()

@@ -4,7 +4,6 @@ const {RESTDataSource} = require('apollo-datasource-rest');
 //Datos del API
 const serverConfig = require('../server');
 
-//Ver ejemplo del repositorio
 class LabelsAPI extends RESTDataSource {
   constructor() {
     super();
@@ -24,7 +23,6 @@ class LabelsAPI extends RESTDataSource {
   async updateLabel(id, label) {
     label.id = id;
     label = new Object(JSON.parse(JSON.stringify(label)));
-    console.log(label);
     let resLabel = await this.post("/label", label);
     return this.labelReducer(resLabel)
   }
@@ -66,6 +64,10 @@ class LabelsAPI extends RESTDataSource {
 
   async removeLabelUser() {
     return {msg: "not supported yet"};
+  }
+
+  async searchLabel(fragment) {
+    return await this.get('/label/search',{fragment});
   }
 
   labelReducer(label) {
