@@ -1,5 +1,7 @@
 //Modulo que permite el manejo de las APIS
 const { RESTDataSource } = require('apollo-datasource-rest');
+const fetch = require('node-fetch');
+
 
 //Datos del API
 const serverConfig = require('../server');
@@ -83,7 +85,7 @@ class ConfigAccountAPI extends RESTDataSource {
     async createConfigNotification(configNotification){
         configNotification = new Object(JSON.parse(JSON.stringify(configNotification)));
         const response = await this.post('ConfigNotificaciones/', configNotification);
-        return this.configNotificationReducer(response);
+        return this.configNotificationReducer(response)
     }
 
     async createWay(way){
@@ -93,9 +95,20 @@ class ConfigAccountAPI extends RESTDataSource {
     }
 
     async createSession(session){
+        try{
         session = new Object(JSON.parse(JSON.stringify(session)));
         const response = await this.post('Sesiones/', session);
-        return this.sessionReducer(response);
+        return {
+            status: 200,
+                data: this.sessionReducer(response.data),
+                token: response.Token
+            };            
+        } catch (error) {
+            return{
+                status: error.extensions.response.status,
+                data: error.extensions.response.body.message,
+            }
+        }
     }
 
     async createLinkedAccount(linkedAccount){
@@ -204,6 +217,26 @@ class ConfigAccountAPI extends RESTDataSource {
             MedioAuth: linkedAccount.MedioAuth,
             CorreoEnlazado: linkedAccount.CorreoEnlazado
         };
+    }
+
+
+    //Verificacion Token- Camilo Gil
+    async validateToken(token){
+        //Headers
+        // let myHeaders = new fetch.Headers();
+        // myHeaders.append("auth", token);
+
+        //Creando Request
+        let requestOptions = {method: 'GET',headers: {auth: token}};
+
+        //Realizando Solicitud
+        const response = await fetch(`${this.baseURL}Sesiones/get_by_user`, requestOptions)
+                               .then(response => { return { status:response.status, body: response.json()}; })
+                               .then(response => { return response; });
+
+        //Manejando la respuesta
+        if(response.status == 200){return { status: 200, data: (await response.body)};}
+        else{return{status: response.status, message: (await response.body).message};}
     }
 
 }
