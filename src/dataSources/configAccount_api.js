@@ -83,7 +83,7 @@ class ConfigAccountAPI extends RESTDataSource {
     async createConfigNotification(configNotification){
         configNotification = new Object(JSON.parse(JSON.stringify(configNotification)));
         const response = await this.post('ConfigNotificaciones/', configNotification);
-        return this.configNotificationReducer(response);
+        return this.configNotificationReducer(response)
     }
 
     async createWay(way){
@@ -93,9 +93,20 @@ class ConfigAccountAPI extends RESTDataSource {
     }
 
     async createSession(session){
+        try{
         session = new Object(JSON.parse(JSON.stringify(session)));
         const response = await this.post('Sesiones/', session);
-        return this.sessionReducer(response);
+        return {
+            status: 200,
+                data: this.sessionReducer(response.data),
+                token: response.Token
+            };            
+        } catch (error) {
+            return{
+                status: error.extensions.response.status,
+                data: error.extensions.response.body.message,
+            }
+        }
     }
 
     async createLinkedAccount(linkedAccount){

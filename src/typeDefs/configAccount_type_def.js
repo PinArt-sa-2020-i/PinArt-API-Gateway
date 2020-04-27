@@ -50,7 +50,7 @@ const configAccountTypeDefs = gql`
         IdUsuario: Int!
         MedioAuth: Int!
         Dispositivo: String!
-        Creacion: String!
+        Creacion: String
         Activo: Boolean!
     }
     input LinkedAccountInput {
@@ -92,7 +92,7 @@ const configAccountTypeDefs = gql`
         deleteWay(id: Int!): Int
 
 
-        createSession(session: SessionInput!): Session!
+        #createSession(session: SessionInput!): Session!
         updateSession(id: Int!, session: SessionInput!): Session!
         deleteSession(id: Int!): Int
 

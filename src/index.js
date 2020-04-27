@@ -32,7 +32,10 @@ const server = new ApolloServer({
        bucketAPI: new BucketAPI(),
        favoriteboardAPI: new FavoriteBoardAPI(),
        labelsAPI: new LabelsAPI()
-    })
+    }),
+    context: async ({ req }) => {
+      return {data: req};
+    }
 });
 
 //Se corre dicho servidor

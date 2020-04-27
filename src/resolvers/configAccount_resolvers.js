@@ -30,7 +30,7 @@ const configAccountResolvers = {
                 deleteWay: (_, {id}, {dataSources}) => dataSources.configAccountAPI.deleteWay(id),
 
 
-                createSession: (_, {session}, {dataSources}) => dataSources.configAccountAPI.createSession(session),
+                //createSession: (_, {session}, {dataSources}) => dataSources.configAccountAPI.createSession(session),
                 updateSession: (_, {id, session}, {dataSources}) => dataSources.configAccountAPI.updateSession(id, session),
                 deleteSession: (_, {id}, {dataSources}) => dataSources.configAccountAPI.deleteSession(id),
 
