@@ -5,6 +5,7 @@ const labelsResolvers = {
     boardLabels: (_, { boardId }, { dataSources }) => dataSources.labelsAPI.boardLabels(boardId),
     userLabels: (_, { userId }, { dataSources }) => dataSources.labelsAPI.userLabels(userId),
     labelById: (_, { id }, { dataSources }) => dataSources.labelsAPI.getLabel(id),
+    searchLabel:(_, { fragment }, { dataSources }) => dataSources.labelsAPI.searchLabel(fragment),
   }
   ,
   Mutation: {
