@@ -1,30 +1,59 @@
+const verficateAuthentication = (data) => {if(data.id == null){ throw new ApolloError("Need Authentication", 400);}}
+
+
 const profileResolver = {
   Query: {
-    allUsers: (_, __, { dataSources }) => dataSources.profileAPI.getAllUser(),
-    userById: (_, { id }, { dataSources }) =>
-      dataSources.profileAPI.getUserbyId(id),
-    userByName: (_, { name }, { dataSources }) =>
-      dataSources.profileAPI.getUserbyName(name),
+    allUsers: async (_, __, { dataSources, data }) => {
+        verficateAuthentication(data);
+        return await dataSources.profileAPI.getAllUser()
+    },
+    userById: async (_, { id }, { dataSources, data }) => {
+        verficateAuthentication(data);
+        return await dataSources.profileAPI.getUserbyId(id)
+    },
+    userByName: async (_, { name }, { dataSources, data }) => {
+        verficateAuthentication(data);
+        return await dataSources.profileAPI.getUserbyName(name)
+    },
   },
+  
   Mutation: {
-    createUser: (_, { user }, { dataSources }) =>
-      dataSources.profileAPI.createUser(user),
-    createAuth: (_, { auth }, { dataSources }) =>
-      dataSources.profileAPI.createAuth(auth),
-    createProfile: (_, { profile }, { dataSources }) =>
-      dataSources.profileAPI.createProfile(profile),
-    createCountry: (_, { country }, { dataSources }) =>
-      dataSources.profileAPI.createCountry(country),
-    createRecovery: (_, { recovery }, { dataSources }) =>
-      dataSources.profileAPI.createRecovery(recovery),
-    createReport: (_, { report }, { dataSources }) =>
-      dataSources.profileAPI.createReport(report),
-    createCause: (_, { cause }, { dataSources }) =>
-      dataSources.profileAPI.createCause(cause),
-    updateUser: (_, { id, user }, { dataSources }) =>
-      dataSources.profileAPI.updateUser(id, user),
-    deleteUser: (_, { id }, { dataSources }) =>
-      dataSources.profileAPI.deleteUser(id),
+    createUser: async (_, { user }, { dataSources, data }) => {
+        verficateAuthentication(data);
+        return await dataSources.profileAPI.createUser(user)
+    },
+    createAuth: async (_, { auth }, { dataSources, data }) => {
+        verficateAuthentication(data);
+        return await dataSources.profileAPI.createAuth(auth)
+    },
+    createProfile: async (_, { profile }, { dataSources, data }) => {
+        verficateAuthentication(data);
+        return await dataSources.profileAPI.createProfile(profile)
+    },
+    createCountry: async (_, { country }, { dataSources, data }) => {
+        verficateAuthentication(data);
+        return await dataSources.profileAPI.createCountry(country)
+    },
+    createRecovery: async (_, { recovery }, { dataSources, data }) => {
+        verficateAuthentication(data);
+        return await dataSources.profileAPI.createRecovery(recovery)
+    },
+    createReport: async (_, { report }, { dataSources, data }) => {
+        verficateAuthentication(data);
+        return await dataSources.profileAPI.createReport(report)
+    },
+    createCause: async (_, { cause }, { dataSources, data }) => {
+        verficateAuthentication(data);
+        return await dataSources.profileAPI.createCause(cause)
+    },
+    updateUser: async (_, { id, user }, { dataSources, data }) => {
+        verficateAuthentication(data);
+        return await dataSources.profileAPI.updateUser(id, user)
+    },
+    deleteUser: async (_, { id }, { dataSources, data }) => {
+        verficateAuthentication(data);
+        return await dataSources.profileAPI.deleteUser(id)
+    },
   },
 };
 

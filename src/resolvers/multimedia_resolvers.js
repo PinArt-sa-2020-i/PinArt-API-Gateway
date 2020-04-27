@@ -1,5 +1,6 @@
 const {ApolloError} = require('apollo-server');
-  
+
+
 function reviewResponse(response){
     if(response.status == 200){
         return response.data;
@@ -12,7 +13,11 @@ function reviewResponse(response){
 const multimediaResolvers = {
     
     Mutation: {
-        addMultimedia:async (_, {multimedia}, {dataSources})  => {
+        addMultimedia:async (_, {multimedia}, {dataSources, data})  => 
+        {
+            //Se valida la autentificacion
+            if(data.id == null){ return new ApolloError("Need Authentication", 400);}
+
             //Datos General de la imagen
             let url_imagen;
             let id_bucket;
@@ -51,7 +56,10 @@ const multimediaResolvers = {
             return reviewResponse(response)
         },     
 
-        deleteTagMultimedia: async (_, {idMultimedia, idTag}, {dataSources}) => {
+        deleteTagMultimedia: async (_, {idMultimedia, idTag}, {dataSources, data}) => {
+            //Se valida la autentificacion
+            if(data.id == null){ return new ApolloError("Need Authentication", 400);}
+
             let response;
             try {
                 response = await dataSources.multimediaAPI.deleteTagMultimedia(idMultimedia, idTag)
@@ -62,7 +70,10 @@ const multimediaResolvers = {
             
         }, 
         
-        addTagMultimedia: async (_, {idMultimedia, idTag}, {dataSources}) => {
+        addTagMultimedia: async (_, {idMultimedia, idTag}, {dataSources, data}) => {
+            //Se valida la autentificacion
+            if(data.id == null){ return new ApolloError("Need Authentication", 400);}
+
             let response;
             try {
                 response = await dataSources.multimediaAPI.addTagMultimedia(idMultimedia, idTag)
@@ -73,7 +84,10 @@ const multimediaResolvers = {
             
         }, 
         
-        deleteMultimedia: async(_, {idMultimedia}, {dataSources}) =>{
+        deleteMultimedia: async(_, {idMultimedia}, {dataSources, data}) =>{
+            //Se valida la autentificacion
+            if(data.id == null){ return new ApolloError("Need Authentication", 400);}
+
             //Se recupera el id del bucket
             let id_bucket;
             try {id_bucket = (await dataSources.feedAPI.getMultimediaById(idMultimedia)).id_bucket;} 
@@ -96,7 +110,10 @@ const multimediaResolvers = {
             return reviewResponse(response);
         },
 
-        updateMultimedia: async(_, {multimedia}, {dataSources}) => {
+        updateMultimedia: async(_, {multimedia}, {dataSources, data}) => {
+            //Se valida la autentificacion
+            if(data.id == null){ return new ApolloError("Need Authentication", 400);}
+
             let response;
             try {
                 response = await dataSources.multimediaAPI.updateMultimedia(multimedia);
@@ -106,7 +123,10 @@ const multimediaResolvers = {
             return reviewResponse(response);
         },
 
-        addMultimediaTablero: async (_, {idMultimedia, idTablero}, {dataSources}) => {
+        addMultimediaTablero: async (_, {idMultimedia, idTablero}, {dataSources, data}) => {
+            //Se valida la autentificacion
+            if(data.id == null){ return new ApolloError("Need Authentication", 400);}
+
             let response;
             try {
                 response = await dataSources.multimediaAPI.addMultimediaTablero(idMultimedia, idTablero)
@@ -117,7 +137,10 @@ const multimediaResolvers = {
             
         },
 
-        deleteMultimediaTablero: async (_, {idMultimedia, idTablero}, {dataSources}) => {
+        deleteMultimediaTablero: async (_, {idMultimedia, idTablero}, {dataSources, data}) => {
+            //Se valida la autentificacion
+            if(data.id == null){ return new ApolloError("Need Authentication", 400);}
+
             let response;
             try {
                 response = await dataSources.multimediaAPI.deleteMultimediaTablero(idTablero, idMultimedia)
@@ -128,7 +151,10 @@ const multimediaResolvers = {
             
         },
         
-        deleteTablero_multimedia: async (_, {idTablero}, {dataSources}) => {
+        deleteTablero_multimedia: async (_, {idTablero}, {dataSources, data}) => {
+            //Se valida la autentificacion
+            if(data.id == null){ return new ApolloError("Need Authentication", 400);}
+
             let response;
             try {
                 response = await dataSources.multimediaAPI.deleteTablero_multimedia(idTablero)
@@ -139,7 +165,10 @@ const multimediaResolvers = {
             
         },
 
-        deleteUsuario_multimedia: async (_, {idUsuario}, {dataSources}) => {
+        deleteUsuario_multimedia: async (_, {idUsuario}, {dataSources, data}) => {
+            //Se valida la autentificacion
+            if(data.id == null){ return new ApolloError("Need Authentication", 400);}
+            
             //Traer imagenes del usuario
             let response;
             try { response = await dataSources.feedAPI.getMultimediaByUser(idUsuario);} 
@@ -162,7 +191,10 @@ const multimediaResolvers = {
             return reviewResponse(response);
         },
 
-        deleteEtiqueta_multimedia: async (_, {idEtiqueta}, {dataSources}) => {
+        deleteEtiqueta_multimedia: async (_, {idEtiqueta}, {dataSources, data}) => {
+            //Se valida la autentificacion
+            if(data.id == null){ return new ApolloError("Need Authentication", 400);}
+
             let response;
             try {
                 response = await dataSources.multimediaAPI.deleteEtiqueta_multimedia(idEtiqueta)

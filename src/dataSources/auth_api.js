@@ -17,9 +17,16 @@ class AuthAPI extends RESTDataSource {
   }
 
   async authenticateUser(user) {
-    user = new Object(JSON.parse(JSON.stringify(user)));
-    const response = await this.post("authenticate", user);
-    return this.authReducer(response);
+    try {
+      user = new Object(JSON.parse(JSON.stringify(user)));
+      const response = await this.post("authenticate", user);  
+      return {status: 200, data: this.authReducer(response)};
+    }catch (error) {
+      return {
+        status: error.extensions.response.status,
+        data: error.extensions.response.body.message
+      };
+    }
   }
 
   //Le da el formato necesario a la salida
@@ -37,8 +44,7 @@ class AuthAPI extends RESTDataSource {
       id: user.id,
       username: user.username,
       firstName: user.firstName,
-      lastName: user.lastName,
-      token: user.token,
+      lastName: user.lastName
     };
   }
 }

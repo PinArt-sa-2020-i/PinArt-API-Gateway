@@ -6,7 +6,7 @@ const authTypeDefs = gql`
     username: String!
     firstName: String!
     lastName: String!
-    token: String!
+    token: String
   }
 
   type Register {
@@ -16,6 +16,7 @@ const authTypeDefs = gql`
   input AuthenticateInput {
     username: String!
     password: String!
+    dispositivo: String
   }
 
   input RegisterInput {
