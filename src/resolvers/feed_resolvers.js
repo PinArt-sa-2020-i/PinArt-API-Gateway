@@ -22,22 +22,23 @@ const feedResolver = {
 
         getUsersFeed: async (_, { idUsuario }, {dataSources, data}) =>{
             verficateAuthentication(data)
-            //Aca se simula la funcion de Elsa
-            //Le envio este idUsuario y me regresa los ids de los usuariso que sigue
-            
-            //Supongamos que eso tiene este formato:
-            const followedUsers = ["Ibai", "Ocelote"];
-
+            idUsuario = parseInt(idUsuario)
+            const response = await dataSources.favoriteboardAPI.getUsersFollowingByFollower(idUsuario);
+            let followedUsers = [];
+            for(let i = 0; i < response.length; i++){
+                followedUsers.push(response[i].id.toString());
+            }
             return await dataSources.feedAPI.getUsersFeed(followedUsers);
 
         },
-        getTagsFeed: async(_, { idTag }, {dataSources, data}) => {
+        getTagsFeed: async(_, { idUsuario }, {dataSources, data}) => {
             verficateAuthentication(data)
-            //Aca se simula la funcion de Elsa
-            //Le envio este idUsuario y me regresa los ids de las etiquetas que sigue
-            
-            //Supongamos que eso tiene este formato:
-            const followedTags = ["LOL", "G2"];
+            idUsuario = parseInt(idUsuario)
+            const response = await dataSources.labelsAPI.userLabels(idUsuario)
+            let followedTags = [];
+            for(let i = 0; i < response.relatedLabels.length; i++){
+                followedTags.push(response.relatedLabels[i].id.toString());
+            }
             return await dataSources.feedAPI.getTagsFeed(followedTags)
         },
     }

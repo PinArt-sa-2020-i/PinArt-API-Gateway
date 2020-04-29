@@ -20,7 +20,7 @@ const feedTypeDefs = gql`
         getMultimediaByTag(id: String!): [Multimedia]
         getMultimediaByTable(id: String!): [Multimedia]
         getUsersFeed(idUsuario: String): [Multimedia]
-        getTagsFeed(idTag: String): [Multimedia]
+        getTagsFeed(idUsuario: String): [Multimedia]
     }
 `;
 
