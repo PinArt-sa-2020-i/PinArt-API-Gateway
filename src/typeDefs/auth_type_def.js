@@ -23,6 +23,7 @@ const authTypeDefs = gql`
     lastName: String!
     username: String!
     password: String!
+    correo: String!
   }
 
   extend type Mutation {
