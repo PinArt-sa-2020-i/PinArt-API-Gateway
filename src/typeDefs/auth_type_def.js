@@ -6,7 +6,6 @@ const authTypeDefs = gql`
     username: String!
     firstName: String!
     lastName: String!
-    token: String!
   }
 
   type Register {
@@ -23,6 +22,7 @@ const authTypeDefs = gql`
     lastName: String!
     username: String!
     password: String!
+    correo: String!
   }
 
   extend type Mutation {
