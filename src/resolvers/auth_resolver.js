@@ -1,4 +1,5 @@
 const { AuthenticationError } = require("apollo-server");
+const {ApolloError} = require('apollo-server');
 
 function reviewResponse(response) {
   if (response) {

@@ -1,3 +1,4 @@
+const {ApolloError} = require('apollo-server');
 const verficateAuthentication = (data) => {if(data.id == null){ throw new ApolloError("Need Authentication", 400);}}
 
 const feedResolver = {
