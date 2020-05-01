@@ -85,9 +85,9 @@ class ProfileAPI extends RESTDataSource {
   userReducer(user) {
     return {
       id: user.id,
-      nombre: user.nombre,
-      apellido: user.apellido,
-      nick: user.nick,
+      firstName: user.firstName,
+      lastName: user.lastName,
+      username: user.username,
       correo: user.correo,
       eliminado: user.eliminado,
       privado: user.privado,

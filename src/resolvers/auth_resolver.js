@@ -47,6 +47,9 @@ const authResolver = {
 
       let user = {
         id: idUsuario,
+        firstName: register.firstName,
+        lastName: register.lastName,
+        username: register.username,
         correo: correo,
         eliminado: eliminado,
         privado: privado,
@@ -54,6 +57,7 @@ const authResolver = {
 
       //Guardado en base de usuarios
       try {
+        console.log(user);
         response = await dataSources.profileAPI.createUser(user);
       } catch (error) {
         return new ApolloError(`PROFILE ERROR: ${500}: ${error}`, 500);
