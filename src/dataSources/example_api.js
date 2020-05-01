@@ -12,7 +12,7 @@ class ExampleAPI extends RESTDataSource {
     }
 
      //Realiza una peticion get para obtener todos los usuarios
-    async getAllExample() {        
+    async getAllExample() {   
         return [{id:"0001"}, {id:"0002"}]
     }
 }

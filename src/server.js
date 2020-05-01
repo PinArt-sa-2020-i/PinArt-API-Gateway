@@ -4,6 +4,17 @@ module.exports = {
     example_port:process.env.EXAMPLE_PORT || '4000',
     example_entryPoint:process.env.EXAMPLE_ENTRY || 'sa-auth-ms/resources/',
 
+    // Data server of LabelsAPI
+    labels_url:process.env.LABELS_URL || 'ec2-52-20-104-224.compute-1.amazonaws.com',
+    labels_port:process.env.LABELS_PORT || '8080',
+    labels_entryPoint:process.env.LABELS_ENTRY || 'label/',
+
+
+    favoriteBoard_url:process.env.FAVORITEBOARD_URL|| 'ec2-18-211-104-18.compute-1.amazonaws.com',
+    favoriteBoard_port:process.env.FAVORITEBOARD_PORT|| '8087',
+
+    example_entryPoint:process.env.EXAMPLE_ENTRY || 'sa-auth-ms/resources/',
+
     //Data server de Multimedia Feed
     feed_url: process.env.FEED_URL || '18.214.200.193',
     feed_port: process.env.FEED_PORT || '3001',
@@ -34,4 +45,5 @@ module.exports = {
     bucket_port: process.env.AUTH_PORT || "8081",
     bucket_entryPoint: process.env.AUTH_ENTRY || "api/S3Bucket/",
 };
+
 

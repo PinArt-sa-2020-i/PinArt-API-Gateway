@@ -15,6 +15,7 @@ const authTypeDefs = gql`
   input AuthenticateInput {
     username: String!
     password: String!
+    dispositivo: String
   }
 
   input RegisterInput {

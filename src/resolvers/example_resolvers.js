@@ -5,7 +5,6 @@ const exampleResolvers = {
     }
     // ,
     // Mutation: {
-        
     // }
 };
 //Exporta los resolvers de examples

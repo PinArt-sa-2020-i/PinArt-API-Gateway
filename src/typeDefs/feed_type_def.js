@@ -12,6 +12,7 @@ const feedTypeDefs = gql`
         multimedia_relacionada_ids: [String]
     }
 
+    
 
     extend type Query {
         getMultimediaById(id: String!): Multimedia

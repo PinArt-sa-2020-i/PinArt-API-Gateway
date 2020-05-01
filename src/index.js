@@ -7,7 +7,6 @@ const typeDefs = require("./typeDefs");
 //Llama al los resolvers
 const resolvers = require("./resolvers");
 
-
 const ExampleAPI = require('./dataSources/example_api');
 const FeedAPI = require('./dataSources/feed_api');
 const MultimediaAPI = require('./dataSources/multimedia_api');
@@ -15,6 +14,13 @@ const ConfigAccountAPI = require('./dataSources/configAccount_api');
 const ProfileAPI = require("./dataSources/profile_api");
 const AuthAPI = require("./dataSources/auth_api");
 const BucketAPI = require('./dataSources/bucket_api');
+const FavoriteBoardAPI = require("./dataSources/favoriteBoard_api");
+const LabelsAPI = require('./dataSources/labels_api');
+
+
+//Authentication
+const authentication = require('./utils/authentication');
+
 //Se crea el servidor
 const server = new ApolloServer({
      typeDefs,
@@ -26,8 +32,11 @@ const server = new ApolloServer({
        profileAPI: new ProfileAPI(),
        authAPI: new AuthAPI(),
        configAccountAPI: new ConfigAccountAPI(),
-       bucketAPI: new BucketAPI()
-     })
+       bucketAPI: new BucketAPI(),
+       favoriteboardAPI: new FavoriteBoardAPI(),
+       labelsAPI: new LabelsAPI()
+    }),
+    context: authentication
 });
 
 //Se corre dicho servidor
