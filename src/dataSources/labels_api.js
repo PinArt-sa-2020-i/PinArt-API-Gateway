@@ -44,7 +44,7 @@ class LabelsAPI extends RESTDataSource {
   }
 
   async userLabels(id) {
-    let res = await this.get(`/label/board/${id}`);
+    let res = await this.get(`/label/user/${id}`);
     return this.labelUserReducer(res);
   }
 
@@ -58,7 +58,7 @@ class LabelsAPI extends RESTDataSource {
   }
 
   async addLabelUser(id, relatedLabels) {
-    let res = await this.put(`/label/board/${id}`,{relatedLabels});
+    let res = await this.put(`/label/user/${id}`,{relatedLabels});
     return this.labelUserReducer(res);
   }
 
