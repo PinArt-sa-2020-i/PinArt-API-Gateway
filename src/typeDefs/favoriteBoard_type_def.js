@@ -59,7 +59,6 @@ const favoriteBoardDefs = gql`
         
     }
     extend type Mutation {
-        createUserBoards(id: Int!): Int!
         deleteUserBoards(id: Int!): Int
         createBoard(board:BoardInput!):Board       
         updateBoard(id: Int!, board: BoardInput!): Board!
