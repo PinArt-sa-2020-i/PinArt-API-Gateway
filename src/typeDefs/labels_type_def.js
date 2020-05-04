@@ -35,9 +35,9 @@ const labelsTypeDefs = gql`
         updateLabel(id: Int!, label: LabelInput): Label!
         deleteLabel(id: Int!): Int!
         addLabelBoard(idBoard: Int!, idLabels: [Int!]): LabelBoard!
-        removeLabelBoard(idBoard: Int!, idLabel: Int!): LabelBoard!
+        removeLabelBoard(idBoard: Int!, idLabel: Int!): Int!
         addLabelUser(idUser: Int!, idLabel: [Int!]): LabelUser!
-        removeLabelUser(idUser: Int!, idLabel: Int!): LabelUser!
+        removeLabelUser(idUser: Int!, idLabel: Int!): Int!
     }
 
 `;
