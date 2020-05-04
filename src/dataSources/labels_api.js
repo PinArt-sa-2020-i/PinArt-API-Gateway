@@ -53,8 +53,9 @@ class LabelsAPI extends RESTDataSource {
     return this.labelBoardReducer(res);
   }
 
-  async removeLabelBoard() {
-    return {msg: "not supported yet"};
+  async removeLabelBoard(idBoard, id) {
+    let response = await this.delete(`/label/board/${idBoard}`,{id});
+    return response.id;
   }
 
   async addLabelUser(id, relatedLabels) {
@@ -62,8 +63,9 @@ class LabelsAPI extends RESTDataSource {
     return this.labelUserReducer(res);
   }
 
-  async removeLabelUser() {
-    return {msg: "not supported yet"};
+  async removeLabelUser(idUser, id) {
+    let response = await this.delete(`/label/user/${idUser}`,{id});
+    return response.id;
   }
 
   async searchLabel(fragment) {
