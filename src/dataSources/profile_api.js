@@ -35,8 +35,13 @@ class ProfileAPI extends RESTDataSource {
 
   async updateProfile(id, profile) {
     profile = new Object(JSON.parse(JSON.stringify(profile)));
-    const response = await this.put(`profile/${id}`, profile);
-    return this.profileReducer(response);
+    try {
+      const response = await this.put(`profile/${id}`, profile);
+      return "Update realizado de manera correcta"
+    } catch (error) {
+      return "Update fallido"
+    }
+    
   }
 
   async deleteUser(id, user) {

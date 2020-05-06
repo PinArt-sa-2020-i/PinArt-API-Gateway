@@ -132,7 +132,7 @@ const profileTypeDefs = gql`
     createRecovery(recovery: RecoveryInput!): Recovery!
     createReport(report: ReportInput!): Report!
     createCause(cause: CauseInput!): Cause!
-    updateProfile(id: Int!, profile: ProfileInput!): Profile
+    updateProfile(id: Int!, profile: ProfileInput!): String
     updateProfilePhoto(image: fotoInput!): String
     deleteUser(id: Int!): Int
   }
