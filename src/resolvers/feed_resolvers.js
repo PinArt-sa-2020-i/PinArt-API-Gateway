@@ -36,11 +36,15 @@ const feedResolver = {
             verficateAuthentication(data)
             idUsuario = parseInt(idUsuario)
             const response = await dataSources.labelsAPI.userLabels(idUsuario)
+            
             let followedTags = [];
             for(let i = 0; i < response.relatedLabels.length; i++){
                 followedTags.push(response.relatedLabels[i].id.toString());
             }
+
+            console.log(followedTags)
             return await dataSources.feedAPI.getTagsFeed(followedTags)
+                
         },
     }
 };

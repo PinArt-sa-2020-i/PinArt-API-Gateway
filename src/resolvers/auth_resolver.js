@@ -45,6 +45,11 @@ const authResolver = {
         );
       }
 
+      //Creando Usuarios en base de datos Boards
+      try {await dataSources.favoriteboardAPI.createUser(idUsuario)} 
+      catch (error) {return new ApolloError(`FAVORITE ERROR: ${500}: ${error}`, 500);}
+
+
       let user = {
         id: idUsuario,
         firstName: register.firstName,
@@ -77,6 +82,8 @@ const authResolver = {
       //Manejando entrada
       return reviewResponse(response);
     },
+
+
 
     authenticateUser: async (_, { auth }, { dataSources }) => {
       //Se autentifica el usuario

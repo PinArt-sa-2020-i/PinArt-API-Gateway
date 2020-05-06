@@ -63,10 +63,10 @@ const favoriteBoardResolvers = {
     },
 
     Mutation: {
-        createUserBoards: async (_, {id}, {dataSources, data}) => {
-            verficateAuthentication(data)
-            return await dataSources.favoriteboardAPI.createUser(id)
-        },
+        // createUserBoards: async (_, {id}, {dataSources, data}) => {
+        //     verficateAuthentication(data)
+        //     return await dataSources.favoriteboardAPI.createUser(id)
+        // },
 
         deleteUserBoards: async (_, {id}, {dataSources, data}) => {
             verficateAuthentication(data)

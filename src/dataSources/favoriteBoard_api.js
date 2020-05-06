@@ -32,7 +32,7 @@ class FavoriteBoardAPI extends RESTDataSource {
     async getAllUserFollow(){
         const response = await this.get('/userfollow/getAll');
         return Array.isArray(response)
-            ? response.map((userfollow) => this.boardReducer(userfollow))
+            ? response.map((userfollow) => this.userfollowReducer(userfollow))
             : [];
     }
 
@@ -116,7 +116,7 @@ class FavoriteBoardAPI extends RESTDataSource {
         boardfollow= new Object(JSON.parse(JSON.stringify(boardfollow)));
         const response = await this.post(`boardfollow/create/`, boardfollow);
         return this.boardfollowReducer(response);
-            
+
     }
 
     // Realiza la peticion  put
@@ -184,7 +184,7 @@ class FavoriteBoardAPI extends RESTDataSource {
             userFollowing: userfollow.userFollowing
         };
     }
-    
+
 }
 
 //exporta el api
