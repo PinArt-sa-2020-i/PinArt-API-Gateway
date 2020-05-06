@@ -15,6 +15,9 @@ const profileTypeDefs = gql`
     recoveries: [Recovery]
     received: [Report]
   }
+  type Foto {
+    fotoUrl: String
+  }
 
   type Auth {
     id: Int!
@@ -86,7 +89,11 @@ const profileTypeDefs = gql`
     noTelefono: String
     edad: String
     userId: Int!
-    countryId: Int!
+    countryId: Int
+  }
+
+  input fotoInput {
+    file: Upload!
   }
 
   input CountryInput {
@@ -125,7 +132,8 @@ const profileTypeDefs = gql`
     createRecovery(recovery: RecoveryInput!): Recovery!
     createReport(report: ReportInput!): Report!
     createCause(cause: CauseInput!): Cause!
-    updateUser(id: Int!, user: UserInput!): User!
+    updateProfile(id: Int!, profile: ProfileInput!): String
+    updateProfilePhoto(image: fotoInput!): String
     deleteUser(id: Int!): Int
   }
 `;

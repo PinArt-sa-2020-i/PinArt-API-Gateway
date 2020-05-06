@@ -1,5 +1,5 @@
 const { AuthenticationError } = require("apollo-server");
-const {ApolloError} = require('apollo-server');
+const { ApolloError } = require("apollo-server");
 
 function reviewResponse(response) {
   if (response) {
@@ -37,7 +37,6 @@ const authResolver = {
 
       //respuesta del register
       if (response) {
-        console.log(response);
         idUsuario = response.id;
       } else {
         return new ApolloError(
@@ -61,16 +60,25 @@ const authResolver = {
         privado: privado,
       };
 
-
-
-
-
-      //Guardado en base de usuarios
+      // Guardado en base de usuarios
       try {
         response = await dataSources.profileAPI.createUser(user);
       } catch (error) {
+        return new ApolloError(`USER ERROR: ${500}: ${error}`, 500);
+      }
+
+      let profile = {
+        userId: idUsuario,
+        countryId: 1,
+      };
+
+      // Creación de perfil
+      try {
+        response = await dataSources.profileAPI.createProfile(profile);
+      } catch (error) {
         return new ApolloError(`PROFILE ERROR: ${500}: ${error}`, 500);
       }
+
       //Manejando entrada
       return reviewResponse(response);
     },
