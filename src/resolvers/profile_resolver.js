@@ -89,8 +89,8 @@ const profileResolver = {
           response.status
         );
       }
-
-      return reviewResponse(response);
+      url_imagen = `https://pinart-images-storage.s3.amazonaws.com/${response.data.message}`
+      return reviewResponse(url_imagen);
     },
     updateProfile: async (_, { id, profile }, { dataSources, data }) => {
       verficateAuthentication(data);

@@ -133,7 +133,7 @@ const profileTypeDefs = gql`
     createReport(report: ReportInput!): Report!
     createCause(cause: CauseInput!): Cause!
     updateProfile(id: Int!, profile: ProfileInput!): Profile
-    updateProfilePhoto(image: fotoInput!): Foto
+    updateProfilePhoto(image: fotoInput!): String
     deleteUser(id: Int!): Int
   }
 `;
