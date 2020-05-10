@@ -15,12 +15,12 @@ module.exports = {
 
 
     //Data server de Multimedia Feed
-    feed_url: process.env.FEED_URL || 'ec2-3-89-6-0.compute-1.amazonaws.com',
+    feed_url: process.env.FEED_URL || 'ec2-3-209-34-155.compute-1.amazonaws.comº',
     feed_port: process.env.FEED_PORT || '3001',
     feed_entryPoint: process.env.FEED_ENTRY || '',
 
     //Data server de MultimediaAPI
-    multimedia_url: process.env.MULTIMEDIA_URL || 'ec2-3-89-6-0.compute-1.amazonaws.com',
+    multimedia_url: process.env.MULTIMEDIA_URL || 'ec2-3-209-34-155.compute-1.amazonaws.com',
     multimedia_port: process.env.MULTIMEDIA_PORT || '3000',
     multimedia_entryPoint: process.env.MULTIMEDIA_ENTRY || '',
 
