@@ -15,7 +15,7 @@ module.exports = {
 
 
     //Data server de Multimedia Feed
-    feed_url: process.env.FEED_URL || 'ec2-3-209-34-155.compute-1.amazonaws.comº',
+    feed_url: process.env.FEED_URL || 'ec2-3-209-34-155.compute-1.amazonaws.com',
     feed_port: process.env.FEED_PORT || '3001',
     feed_entryPoint: process.env.FEED_ENTRY || '',
 
