@@ -54,6 +54,11 @@ const favoriteBoardResolvers = {
             return await dataSources.favoriteboardAPI.getBoardFollowbyId(id)
         },
 
+        getAllBoardsFollowByUser: async (_, { user_id }, {dataSources, data}) => {
+            verficateAuthentication(data)
+            return await dataSources.favoriteboardAPI.getAllBoardsFollowByUser(user_id)
+        },
+
         allBoardsByName:async (_, { name }, {dataSources, data}) => {
             verficateAuthentication(data)
             return await dataSources.favoriteboardAPI.getAllBoardsByName(name)
