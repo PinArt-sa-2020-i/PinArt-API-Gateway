@@ -94,7 +94,9 @@ class FavoriteBoardAPI extends RESTDataSource {
 
     async getAllBoardsFollowByUser(user_id) {
         const response = await this.get(`/boardfollow/getAllBoardsFollowByUser/${user_id}`);
-        return this.boardfollowReducer(response);
+        return Array.isArray(response)
+            ? response.map((board) => this.boardReducer(board))
+            : [];
     }
 
 

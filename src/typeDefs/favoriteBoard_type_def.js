@@ -53,7 +53,7 @@ const favoriteBoardDefs = gql`
         allBoardsByUser(id: Int!): [Board]!
         boardById(id: Int!): Board!
         userFollowById(id: Int!): UserFollow!
-        getAllBoardsFollowByUser(user_id: Int!): BoardFollow!
+        getAllBoardsFollowByUser(user_id: Int!): [Board]!
         boardFollowById(id: Int!): BoardFollow!
         allBoardsByName(name: String!): [Board]!
            
