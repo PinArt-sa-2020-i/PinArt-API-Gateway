@@ -11,5 +11,5 @@ RUN npm install
 # Bundle app source
 COPY . /sa-api/
 
-EXPOSE  5000
+EXPOSE  443
 CMD [ "npm", "start"]
