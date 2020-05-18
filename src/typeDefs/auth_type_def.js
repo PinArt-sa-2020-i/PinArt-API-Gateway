@@ -6,6 +6,7 @@ const authTypeDefs = gql`
     username: String!
     firstName: String!
     lastName: String!
+    idSesion: String!
     token: String
   }
 

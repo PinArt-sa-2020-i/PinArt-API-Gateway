@@ -127,6 +127,7 @@ const authResolver = {
         username: responseAuth.data.username,
         firstName: responseAuth.data.firstName,
         lastName: responseAuth.data.lastName,
+        idSesion: responseSesion.data.id,
         token: responseSesion.token,
       };
     },
