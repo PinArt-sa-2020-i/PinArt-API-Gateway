@@ -62,7 +62,7 @@ apollo.applyMiddleware({ app })
 
 let server
 if (config.ssl) {
-  // Assumes certificates are in a .ssl folder off of the package root. Make sure 
+  // Assumes certificates are in a .ssl folder off of the package root. Make sure
   // these files are secured.
   server = https.createServer(
     {

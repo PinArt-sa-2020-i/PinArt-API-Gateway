@@ -7,3 +7,7 @@ services:
       PORT: '443'
     ports:
       - '443:443'
+  sa-proxy:
+    build: pinart-proxy
+    ports:
+      - "80:80"
