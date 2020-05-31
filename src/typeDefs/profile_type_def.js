@@ -36,6 +36,7 @@ const profileTypeDefs = gql`
     edad: String
     userId: Int!
     countryId: Int!
+      Likes: [String]
   }
 
   type Country {
