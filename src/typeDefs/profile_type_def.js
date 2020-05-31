@@ -36,7 +36,7 @@ const profileTypeDefs = gql`
     edad: String
     userId: Int!
     countryId: Int!
-      Likes: [String]
+      likes: [String]
   }
 
   type Country {
@@ -91,6 +91,7 @@ const profileTypeDefs = gql`
     edad: String
     userId: Int!
     countryId: Int
+      likes: [String]
   }
 
   input fotoInput {
