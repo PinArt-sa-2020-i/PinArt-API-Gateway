@@ -36,7 +36,7 @@ const profileTypeDefs = gql`
     edad: String
     userId: Int!
     countryId: Int!
-      likes: [String]
+      gustos: String
   }
 
   type Country {
@@ -91,7 +91,6 @@ const profileTypeDefs = gql`
     edad: String
     userId: Int!
     countryId: Int
-      likes: [String]
   }
 
   input fotoInput {
@@ -129,7 +128,7 @@ const profileTypeDefs = gql`
   extend type Mutation {
     createUser(user: UserInput!): User!
     createAuth(auth: AuthInput!): Auth!
-    createProfile(profile: ProfileInput!): Profile!
+    createProfile(profile: ProfileInput!, username: String!): Profile!
     createCountry(country: CountryInput!): Country!
     createRecovery(recovery: RecoveryInput!): Recovery!
     createReport(report: ReportInput!): Report!
