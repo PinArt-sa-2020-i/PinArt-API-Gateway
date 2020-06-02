@@ -45,10 +45,12 @@ const profileResolver = {
     createProfile: async (_, { profile, username }, { dataSources, data }) => {
       //verficateAuthentication(data);
       let likes = await dataSources.interfaceAPI.getLikes(username);
-      console.log(likes);
-      profile.gustos = likes;
-      profile.id = 0;
-      return await dataSources.profileAPI.createProfile(profile);
+      let profile_2 = {
+        userId: profile.userId,
+        countryId: 1,
+        gustos: likes,
+      };
+      return await dataSources.profileAPI.createProfile(profile_2);
     },
     createCountry: async (_, { country }, { dataSources, data }) => {
       verficateAuthentication(data);
