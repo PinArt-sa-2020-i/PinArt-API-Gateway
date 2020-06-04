@@ -10,7 +10,7 @@ module.exports = {
     labels_entryPoint:process.env.LABELS_ENTRY || 'label/',
 
     // Data server of Interface
-    interface_url:process.env.INTERFACE_URL || '192.168.0.5',
+    interface_url:process.env.INTERFACE_URL || 'ec2-3-209-34-155.compute-1.amazonaws.com',
     interface_port:process.env.INTERFACE_PORT || '9000',
     interface_entryPoint:process.env.INTERFACE_ENTRY || '',
 
