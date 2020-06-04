@@ -9,7 +9,7 @@ class InterfaceAPI extends RESTDataSource {
   }
 
   async getLikes(username) {
-    return this.get('user');
+    return this.get(`getAllGustos/${username}`);
   }
 
 

@@ -69,15 +69,15 @@ const authResolver = {
       let likes;
       try{
         likes = await dataSources.interfaceAPI.getLikes(register.username);
+        likes = likes.likes.join();
       }catch (e) {
-        return new ApolloError(`INTERFACE ERROR: ${500}: ${e}`, 500);
+        // return new ApolloError(`INTERFACE ERROR: ${500}: ${e}`, 500);
       }
-
       console.log(likes);
       let profile = {
         userId: idUsuario,
         countryId: 1,
-        gustos: likes,
+        gustos: typeof likes == String ? likes: '',
       };
 
       // Creación de perfil
