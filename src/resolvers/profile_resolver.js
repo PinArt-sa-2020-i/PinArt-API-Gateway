@@ -42,9 +42,9 @@ const profileResolver = {
       verficateAuthentication(data);
       return await dataSources.profileAPI.createAuth(auth);
     },
-    createProfile: async (_, { profile }, { dataSources, data }) => {
+    createProfile: async (_, { profile, username }, { dataSources, data }) => {
       verficateAuthentication(data);
-      return await dataSources.profileAPI.createProfile(profile);
+      return await dataSources.profileAPI.createProfile(profile_2);
     },
     createCountry: async (_, { country }, { dataSources, data }) => {
       verficateAuthentication(data);

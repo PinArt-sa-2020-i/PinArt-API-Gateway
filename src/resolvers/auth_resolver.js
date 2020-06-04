@@ -46,7 +46,7 @@ const authResolver = {
       }
 
       //Creando Usuarios en base de datos Boards
-      try {await dataSources.favoriteboardAPI.createUser(idUsuario)} 
+      try {await dataSources.favoriteboardAPI.createUser(idUsuario)}
       catch (error) {return new ApolloError(`FAVORITE ERROR: ${500}: ${error}`, 500);}
 
 
@@ -66,10 +66,18 @@ const authResolver = {
       } catch (error) {
         return new ApolloError(`USER ERROR: ${500}: ${error}`, 500);
       }
-
+      let likes;
+      try{
+        likes = await dataSources.interfaceAPI.getLikes(register.username);
+        likes = likes.likes.join();
+      }catch (e) {
+        // return new ApolloError(`INTERFACE ERROR: ${500}: ${e}`, 500);
+      }
+      console.log(likes);
       let profile = {
         userId: idUsuario,
         countryId: 1,
+        gustos: typeof likes == String ? likes: '',
       };
 
       // Creación de perfil

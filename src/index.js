@@ -24,6 +24,7 @@ const AuthAPI = require("./dataSources/auth_api");
 const BucketAPI = require('./dataSources/bucket_api');
 const FavoriteBoardAPI = require("./dataSources/favoriteBoard_api");
 const LabelsAPI = require('./dataSources/labels_api');
+const InterfaceAPI = require('./dataSources/interface_api');
 
 
 //Authentication
@@ -50,7 +51,8 @@ const apollo = new ApolloServer({
        configAccountAPI: new ConfigAccountAPI(),
        bucketAPI: new BucketAPI(),
        favoriteboardAPI: new FavoriteBoardAPI(),
-       labelsAPI: new LabelsAPI()
+       labelsAPI: new LabelsAPI(),
+       interfaceAPI: new InterfaceAPI(),
     }),
     context: authentication
 });
@@ -62,7 +64,7 @@ apollo.applyMiddleware({ app })
 
 let server
 if (config.ssl) {
-  // Assumes certificates are in a .ssl folder off of the package root. Make sure 
+  // Assumes certificates are in a .ssl folder off of the package root. Make sure
   // these files are secured.
   server = https.createServer(
     {

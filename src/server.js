@@ -9,6 +9,11 @@ module.exports = {
     labels_port:process.env.LABELS_PORT || '8080',
     labels_entryPoint:process.env.LABELS_ENTRY || 'label/',
 
+    // Data server of Interface
+    interface_url:process.env.INTERFACE_URL || 'ec2-3-209-34-155.compute-1.amazonaws.com',
+    interface_port:process.env.INTERFACE_PORT || '9000',
+    interface_entryPoint:process.env.INTERFACE_ENTRY || '',
+
 
     favoriteBoard_url:process.env.FAVORITEBOARD_URL|| 'ec2-18-211-104-18.compute-1.amazonaws.com',
     favoriteBoard_port:process.env.FAVORITEBOARD_PORT|| '8087',
