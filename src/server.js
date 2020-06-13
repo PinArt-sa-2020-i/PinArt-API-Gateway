@@ -25,7 +25,7 @@ module.exports = {
     feed_entryPoint: process.env.FEED_ENTRY || '',
 
     //Data server de MultimediaAPI
-    multimedia_url: process.env.MULTIMEDIA_URL || 'ec2-3-209-34-155.compute-1.amazonaws.com',
+    multimedia_url: process.env.MULTIMEDIA_URL || 'ec2-34-207-212-142.compute-1.amazonaws.com',
     multimedia_port: process.env.MULTIMEDIA_PORT || '3000',
     multimedia_entryPoint: process.env.MULTIMEDIA_ENTRY || '',
 
