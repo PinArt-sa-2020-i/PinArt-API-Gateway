@@ -32,7 +32,7 @@ const authentication = require('./utils/authentication');
 
 //Add SSL Terminal
 const configurations = {
-    development: { ssl: true, port: 443, hostname: 'ec2-3-209-34-155.compute-1.amazonaws.com' }
+    development: { ssl: true, port: 444, hostname: 'ec2-3-209-34-155.compute-1.amazonaws.com' }
 }
 const environment = 'development'
 const config = configurations[environment]
