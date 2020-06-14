@@ -21,15 +21,81 @@ const profileResolver = {
   Query: {
     allUsers: async (_, __, { dataSources, data }) => {
       verficateAuthentication(data);
-      return await dataSources.profileAPI.getAllUser();
+      return []
     },
     userById: async (_, { id }, { dataSources, data }) => {
       verficateAuthentication(data);
-      return await dataSources.profileAPI.getUserbyId(id);
+      return {
+        id: 0,
+        firstName: "boot",
+        lastName: "boot",
+        username: "boot",
+        correo: "boot",
+        eliminado: false,
+        privado: false,
+        createdDate: "boot",
+        auth: [{
+          id: 0,
+          estado: "activo",
+          userId: 0
+        }],
+        profiles: [{
+          country: {
+            id: 0,
+            nombre: "boot",
+            prefijo: "boot"
+          },
+          id: 0,
+          fechaNacimiento: "boot",
+          genero: "boot",
+          foto: "boot",
+          descripcion: "boot",
+          noTelefono: "boot",
+          edad: "boot",
+          userId: 0,
+          countryId: 0,
+          gustos: "boot"
+        }],
+        recoveries: [],
+        received: []
+      };
     },
     userByName: async (_, { name }, { dataSources, data }) => {
       verficateAuthentication(data);
-      return await dataSources.profileAPI.getUserbyName(name);
+      return {
+        id: 0,
+        firstName: "boot",
+        lastName: "boot",
+        username: "boot",
+        correo: "boot",
+        eliminado: false,
+        privado: false,
+        createdDate: "boot",
+        auth: [{
+          id: 0,
+          estado: "activo",
+          userId: 0
+        }],
+        profiles: [{
+          country: {
+            id: 0,
+            nombre: "boot",
+            prefijo: "boot"
+          },
+          id: 0,
+          fechaNacimiento: "boot",
+          genero: "boot",
+          foto: "boot",
+          descripcion: "boot",
+          noTelefono: "boot",
+          edad: "boot",
+          userId: 0,
+          countryId: 0,
+          gustos: "boot"
+        }],
+        recoveries: [],
+        received: []
+      };
     },
   },
 
