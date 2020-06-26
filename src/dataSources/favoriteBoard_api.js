@@ -9,7 +9,7 @@ class FavoriteBoardAPI extends RESTDataSource {
     constructor() {
         super();
        // this.baseURL = `http://${serverConfig.favoriteBoard_url}:${serverConfig.favoriteBoard_port}/${serverConfig.favoriteBoard_entryPoint}`;
-        this.baseURL = `http://${serverConfig.favoriteBoard_url}:${serverConfig.favoriteBoard_port}`;
+        this.baseURL = `http://${serverConfig.favoriteBoard_url}`;
     }
 
     //Realiza una peticion get para obtener todos los datos

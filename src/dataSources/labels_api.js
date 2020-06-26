@@ -7,7 +7,7 @@ const serverConfig = require('../server');
 class LabelsAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = `http://${serverConfig.labels_url}:${serverConfig.labels_port}`;
+    this.baseURL = `http://${serverConfig.labels_url}`;
   }
 
   async getAllLabels(){

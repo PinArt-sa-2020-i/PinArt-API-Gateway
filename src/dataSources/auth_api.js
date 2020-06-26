@@ -5,7 +5,7 @@ const serverConfig = require("../server");
 class AuthAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = `http://${serverConfig.auth_url}:${serverConfig.auth_port}/${serverConfig.auth_entryPoint}`;
+    this.baseURL = `http://${serverConfig.auth_url}/${serverConfig.auth_entryPoint}`;
   }
 
   //Realiza una peticion get para obtener todos los usuarios

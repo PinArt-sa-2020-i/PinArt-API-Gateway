@@ -5,7 +5,7 @@ const serverConfig = require("../server");
 class ProfileAPI extends RESTDataSource {
   constructor() {
     super();
-    this.baseURL = `http://${serverConfig.profile_url}:${serverConfig.profile_port}/${serverConfig.profile_entryPoint}`;
+    this.baseURL = `http://${serverConfig.profile_url}/${serverConfig.profile_entryPoint}`;
   }
 
   //Realiza una peticion get para obtener todos los usuarios

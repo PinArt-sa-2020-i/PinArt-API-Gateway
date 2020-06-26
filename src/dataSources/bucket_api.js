@@ -11,7 +11,7 @@ const serverConfig = require('../server');
 class BucketAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = `http://${serverConfig.bucket_url}:${serverConfig.bucket_port}/${serverConfig.bucket_entryPoint}`;    
+        this.baseURL = `http://${serverConfig.bucket_url}/${serverConfig.bucket_entryPoint}`;    
     }
 
      //Guardando File en el Bucket

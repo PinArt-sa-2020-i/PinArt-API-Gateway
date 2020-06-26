@@ -13,7 +13,7 @@ class MultimediaAPI extends RESTDataSource {
 
     constructor() {
         super();
-        this.baseURL = `http://${serverConfig.multimedia_url}:${serverConfig.multimedia_port}/${serverConfig.multimedia_entryPoint}`;    
+        this.baseURL = `http://${serverConfig.multimedia_url}/${serverConfig.multimedia_entryPoint}`;    
     }
     
 

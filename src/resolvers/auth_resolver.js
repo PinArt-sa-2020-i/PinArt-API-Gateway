@@ -66,14 +66,10 @@ const authResolver = {
       } catch (error) {
         return new ApolloError(`USER ERROR: ${500}: ${error}`, 500);
       }
-      let likes;
-      try{
-        likes = await dataSources.interfaceAPI.getLikes(register.username);
-        likes = likes.likes.join();
-      }catch (e) {
-        // return new ApolloError(`INTERFACE ERROR: ${500}: ${e}`, 500);
-      }
-      console.log(likes);
+
+
+      let likes = "all";
+      
       let profile = {
         userId: idUsuario,
         countryId: 1,

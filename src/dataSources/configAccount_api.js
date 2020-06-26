@@ -10,7 +10,7 @@ const serverConfig = require('../server');
 class ConfigAccountAPI extends RESTDataSource {
     constructor() {
         super();
-        this.baseURL = `http://${serverConfig.configAccount_url}:${serverConfig.configAccount_port}/${serverConfig.configAccount_entryPoint}`;    
+        this.baseURL = `http://${serverConfig.configAccount_url}/${serverConfig.configAccount_entryPoint}`;    
     }
 
     // Get 
