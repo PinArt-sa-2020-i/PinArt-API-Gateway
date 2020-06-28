@@ -34,7 +34,7 @@ const multimediaResolvers = {
             
             //Respuesta del bucket
             if(response.status == 200){
-                url_imagen = `https://pinart-images-storage.s3.amazonaws.com/${response.data.message}`
+                url_imagen = `https://pin-art-images-storage.s3.amazonaws.com/${response.data.message}`
                 id_bucket = response.data.message;
             }
             else {return new ApolloError(`API ERROR: ${response.message} - ${response.status} `, response.status);}
