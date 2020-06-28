@@ -37,8 +37,8 @@ module.exports = {
     auth_entryPoint: process.env.AUTH_ENTRY || "users/",
 
     //Bucket API
-    bucket_url: process.env.AUTH_URL || "3.227.65.124:8081",
-    bucket_entryPoint: process.env.AUTH_ENTRY || "api/S3Bucket/",
+    bucket_url: process.env.BUCKET_URL || "3.227.65.124:8081",
+    bucket_entryPoint: process.env.BUCKET_ENTRY || "api/S3Bucket/",
 };
 
 
