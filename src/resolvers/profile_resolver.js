@@ -89,7 +89,7 @@ const profileResolver = {
           response.status
         );
       }
-      url_imagen = `https://pinart-images-storage.s3.amazonaws.com/${response.data.message}`
+      url_imagen = `https://pin-art-images-storage.s3.amazonaws.com/${response.data.message}`;
       return reviewResponse(url_imagen);
     },
     updateProfile: async (_, { id, profile }, { dataSources, data }) => {
